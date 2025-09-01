@@ -1,635 +1,495 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Hamza Tariq — Portfolio</title>
-  <meta name="description" content="Hamza Tariq - Aspiring web developer from Faisalabad. HTML, CSS, JS, React, Tailwind. Projects, skills and contact." />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hamza | Web Developer</title>
 
-  <!-- Tailwind CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ['Montserrat', 'sans-serif'],
-            playfair: ['"Playfair Display SC"', 'serif'],
-          },
-          colors: {
-            redish: '#da0202',
-          },
-          boxShadow: {
-            soft: '0 10px 40px rgba(2,6,23,0.6)',
-            softHover: '0 20px 50px rgba(2,6,23,0.8)',
-          }
-        }
-      }
-    };
-  </script>
-
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600;800&family=Playfair+Display+SC:wght@400;700&display=swap" rel="stylesheet">
+  <!-- Google Fonts: Montserrat -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;800&display=swap" rel="stylesheet">
 
   <style>
-    /* -------------------------
-       Base + helpers
-       ------------------------- */
-    html { scroll-behavior: smooth; }
-    body { background: #070707; -webkit-font-smoothing:antialiased; }
-    ::-webkit-scrollbar { width: 8px; }
-    ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.06); border-radius: 8px; }
-
-    /* -------------------------
-       Animations & Entrance
-       ------------------------- */
-    @keyframes fadeBounce {
-      0% { opacity: 0; transform: translateY(34px) scale(0.97); }
-      45% { opacity: 1; transform: translateY(-6px) scale(1.03); }
-      70% { transform: translateY(0) scale(0.99); }
-      100% { opacity: 1; transform: translateY(0) scale(1); }
-    }
-    .animate-fadeBounce { animation: fadeBounce 1.15s cubic-bezier(.2,.9,.2,1) both; }
-
-    .card-entrance {
-      opacity: 0;
-      transform: translateY(16px);
-      transition: all 0.68s cubic-bezier(.2,.9,.2,1);
-      will-change: transform, opacity;
-    }
-    .card-entrance.show {
-      opacity: 1;
-      transform: translateY(0);
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
-    /* -------------------------
-       Nav link underline
-       ------------------------- */
-    .nav-link { position: relative; }
-    .nav-link::after {
-      content: '';
-      position: absolute;
-      width: 0%;
-      height: 2px;
-      bottom: -4px;
-      left: 0;
-      background: linear-gradient(90deg,#ff6b6b,#f3eff1);
-      transition: width .28s ease-in-out;
-    }
-    .nav-link:hover::after { width:100%; }
-
-    /* -------------------------
-       Hero decorations
-       ------------------------- */
-    .bg-cover-fixed { background-position: center; background-size: cover; background-repeat: no-repeat; }
-    .hero-gradient {
-      background: linear-gradient(180deg, rgba(10,10,10,0.15), rgba(7,7,7,0.85));
+    body {
+      background: #0a0a0a;
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      text-align: center;
     }
 
-    /* -------------------------
-       Portfolio 3D tilt
-       ------------------------- */
-    .tilt {
-      transform-style: preserve-3d;
-      transition: transform 300ms cubic-bezier(.2,.9,.2,1), box-shadow 200ms;
-      will-change: transform;
-      perspective: 1200px;
-    }
-    .tilt-inner {
-      transform: translateZ(0);
-      transition: transform 300ms cubic-bezier(.2,.9,.2,1);
+    .container {
+      width: 90%;
+      margin: auto;
+      padding: 30px;
     }
 
-    /* simple shadow/hover lift */
-    .card-hover {
-      box-shadow: 0 8px 30px rgba(2,6,23,0.5);
-      transition: transform .25s ease, box-shadow .25s ease;
-    }
-    .card-hover:hover { transform: translateY(-10px) scale(1.01); box-shadow: 0 22px 70px rgba(2,6,23,0.8); }
-
-    /* -------------------------
-       Progress bars (animated)
-       ------------------------- */
-    .skill-bar { transition: width 1.2s cubic-bezier(.2,.9,.2,1); height: 100%; border-radius: 999px; }
-
-    /* -------------------------
-       Toast helpers
-       ------------------------- */
-    .toast-hidden { opacity: 0; transform: translateY(10px); pointer-events: none; }
-    .toast-show { opacity: 1; transform: translateY(0); pointer-events: auto; }
-
-    /* -------------------------
-       Glassy form focus
-       ------------------------- */
-    .glass {
-      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
-      border: 1px solid rgba(255,255,255,0.04);
-      backdrop-filter: blur(6px);
+    /* Navbar */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      font-size: 14px;
+      letter-spacing: 2px;
     }
 
-    /* small responsive tweaks */
-    @media (max-width:640px) {
-      .hero-title { font-size: 28px; }
+    .logo {
+      font-weight: 800;
+      font-size: 22px;
     }
+
+    .nav {
+      display: flex;
+      gap: 30px;
+    }
+
+    .nav a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 400;
+      transition: 0.3s;
+    }
+
+    .nav a:hover {
+      color: #ff0000;
+    }
+
+    /* Hero Section */
+    .center-text {
+      margin: 120px 0 60px;
+    }
+
+    .center-text p {
+      font-size: 15px;
+      margin-bottom: 10px;
+      color: #aaa;
+      font-weight: 300;
+      letter-spacing: 3px;
+    }
+
+    .center-text h1 {
+      font-size: 100px;
+      font-weight: 700;
+      transform: scaleX(1.2);
+      letter-spacing: 0;
+    }
+
+    .center-text span {
+      display: block;
+      font-size: 14px;
+      margin-top: 10px;
+      color: #aaa;
+      letter-spacing: 2px;
+      font-weight: 300;
+    }
+
+    /* About Section */
+    .about {
+      margin-top: 80px;
+    }
+
+    .about h2 {
+      font-size: 40px;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 20px;
+      display: inline-block;
+      border-right: 3px solid #ff0000;
+      white-space: nowrap;
+      overflow: hidden;
+      width: 0;
+      animation: typing 3s steps(20, end) forwards, blink 0.6s step-end infinite alternate;
+    }
+
+    .about p {
+      max-width: 700px;
+      margin: 20px auto 0;
+      font-size: 16px;
+      color: #ccc;
+      line-height: 1.6;
+    }
+
+    /* Typing Effect */
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+
+    @keyframes blink {
+      50% { border-color: transparent }
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .center-text h1 {
+        font-size: 50px;
+        transform: scaleX(1.1);
+      }
+      .about h2 {
+        font-size: 30px;
+      }
+      .about p {
+        font-size: 14px;
+        padding: 0 10px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .center-text h1 {
+        font-size: 35px;
+        transform: scaleX(1.05);
+      }
+      .about h2 {
+        font-size: 24px;
+      }
+      .about p {
+        font-size: 12px;
+      }
+    }
+    /* Education Section */
+/* Education Section */
+.education {
+  text-align: center;
+  margin-top: 100px;
+}
+
+.education h2 {
+  font-size: 30px;
+  letter-spacing: 3px;
+  font-weight: 700;
+  margin-bottom: 40px;
+  position: relative;
+  display: inline-block;
+}
+
+.education h2::after {
+  content: "";
+  display: block;
+  width: 70%;
+  height: 2px;
+  background: #ff0000;
+  margin: 10px auto 0;
+}
+
+/* Card */
+.edu-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 18px;
+  padding: 35px;
+  max-width: 750px;
+  margin: 0 auto;
+  text-align: left;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.edu-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 35px rgba(255, 0, 0, 0.25);
+}
+
+/* Header */
+.edu-header {
+  margin-bottom: 10px;
+}
+
+.edu-header h3 {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.edu-header .degree {
+  font-size: 15px;
+  color: #bbb;
+}
+
+/* Timeline */
+.edu-timeline {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  color: #aaa;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding-bottom: 8px;
+  margin-bottom: 15px;
+}
+
+/* Status Tag */
+.edu-status {
+  display: inline-block;
+  background: #ff1a1a;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 5px 12px;
+  border-radius: 20px;
+  margin-bottom: 20px;
+}
+
+/* Section */
+.edu-section {
+  margin-bottom: 18px;
+}
+
+.edu-section h4 {
+  font-size: 15px;
+  font-weight: 600;
+  color: #ff4444;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.edu-section p {
+  font-size: 14px;
+  color: #ccc;
+}
+
+/* Coursework Grid */
+.course-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 10px;
+}
+
+.course-grid span {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 8px 12px;
+  font-size: 13px;
+  color: #ddd;
+  transition: 0.3s ease;
+}
+
+.course-grid span:hover {
+  background: rgba(255, 0, 0, 0.1);
+  border-color: rgba(255, 0, 0, 0.4);
+}
+/* Experience Section */
+.experience {
+  text-align: center;
+  margin-top: 100px;
+}
+
+.experience h2 {
+  font-size: 30px;
+  letter-spacing: 3px;
+  font-weight: 700;
+  margin-bottom: 40px;
+  position: relative;
+  display: inline-block;
+}
+
+.experience h2::after {
+  content: "";
+  display: block;
+  width: 70%;
+  height: 2px;
+  background: #ff0000;
+  margin: 10px auto 0;
+}
+
+/* Card */
+.exp-card {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  max-width: 750px;
+  margin: 0 auto;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.6);
+}
+
+.exp-overlay {
+  background: url("https://i.pinimg.com/736x/20/42/67/204267e22378caac223b3770f2184609.jpg");
+  background-size: cover;
+  background-position: center;
+  filter: blur(18px) brightness(0.4);
+  position: absolute;
+  inset: 0;
+}
+
+.exp-content {
+  position: relative;
+  padding: 35px;
+  text-align: left;
+  color: #fff;
+  backdrop-filter: blur(6px);
+}
+
+/* Header */
+.exp-header h3 {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.exp-header .role {
+  font-size: 15px;
+  color: #ddd;
+}
+
+/* Timeline */
+.exp-timeline {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  color: #bbb;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  padding-bottom: 8px;
+  margin: 12px 0 18px;
+}
+
+/* Status */
+.exp-status {
+  display: inline-block;
+  background: #ff1a1a;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 20px;
+  margin-bottom: 20px;
+}
+
+/* Section */
+.exp-section {
+  margin-bottom: 18px;
+}
+
+.exp-section h4 {
+  font-size: 15px;
+  font-weight: 600;
+  color: #ff4444;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.exp-section ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.exp-section ul li {
+  font-size: 14px;
+  margin-bottom: 6px;
+  position: relative;
+  padding-left: 18px;
+}
+
+.exp-section ul li::before {
+  content: "✔";
+  position: absolute;
+  left: 0;
+  color: #ff4444;
+  font-size: 12px;
+}
+
+/* Focus Areas Grid */
+.focus-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 10px;
+}
+
+.focus-grid span {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 10px;
+  padding: 8px 12px;
+  font-size: 13px;
+  color: #eee;
+  transition: 0.3s ease;
+}
+
+.focus-grid span:hover {
+  background: rgba(255, 0, 0, 0.15);
+  border-color: rgba(255, 0, 0, 0.5);
+} #typed-text::after {
+  content: '|';
+  animation: blink 0.7s infinite;
+  margin-left: 2px;
+}
+
+@keyframes blink {
+  0%, 50%, 100% { opacity: 1; }
+  25%, 75% { opacity: 0; }
+}
+/* Remove blinking cursor */
+#typed-text::after {
+  content: none;
+}
+
+/* Or simply delete the previous #typed-text::after CSS entirely */
+.about h2 {
+  font-size: 40px;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 20px;
+  display: inline-block;
+  border-right: none; /* remove cursor line */
+  width: auto;
+  animation: none; /* remove blink */
+}
+
+
   </style>
 </head>
-<body class="font-sans text-white">
-
-  <!-- NAVBAR -->
-  <header class="sticky top-4 z-50">
-    <nav class="max-w-6xl mx-auto px-6 md:px-8 bg-black/50 backdrop-blur-lg rounded-full shadow-soft py-3 flex items-center justify-between">
-      <a href="#home" class="flex items-center gap-3">
-        <div class="w-10 h-10 rounded-full bg-gradient-to-r from-red-500 to-redish flex items-center justify-center text-white font-bold">HT</div>
-        <span class="font-playfair text-lg">Hamza</span>
-      </a>
-
-      <div class="hidden md:flex items-center gap-8">
-        <a href="#home" class="nav-link text-gray-300 font-medium">Home</a>
-        <a href="#about" class="nav-link text-gray-300 font-medium">About</a>
-        <a href="#portfolio" class="nav-link text-gray-300 font-medium">Portfolio</a>
-        <a href="#skills" class="nav-link text-gray-300 font-medium">Skills</a>
-        <a href="#contact" class="nav-link text-gray-300 font-medium">Contact</a>
-      </div>
-
-      <button id="menu-btn" aria-label="Open menu" class="md:hidden text-2xl text-gray-200 focus:outline-none">☰</button>
-    </nav>
-
-    <!-- Mobile menu -->
-    <div id="mobile-menu" class="max-w-6xl mx-auto px-6 md:px-8 mt-3 md:hidden">
-      <div class="mobile-panel bg-black/70 glass rounded-xl py-4 px-4 flex flex-col gap-2 opacity-0 translate-y-3 pointer-events-none transition-all duration-300">
-        <a href="#home" class="py-2 px-3 rounded-md hover:text-redish">Home</a>
-        <a href="#about" class="py-2 px-3 rounded-md hover:text-redish">About</a>
-        <a href="#portfolio" class="py-2 px-3 rounded-md hover:text-redish">Portfolio</a>
-        <a href="#skills" class="py-2 px-3 rounded-md hover:text-redish">Skills</a>
-        <a href="#contact" class="py-2 px-3 rounded-md hover:text-redish">Contact</a>
+<body>
+  <div class="container">
+    <!-- Navbar -->
+    <div class="header">
+      <div class="logo">HE</div>
+      <div class="nav">
+        <a href="#">PROJECTS</a>
+        <a href="#">CONTACT</a>
       </div>
     </div>
-  </header>
-
-  <!-- HERO -->
-  <section id="home" class="relative h-screen flex items-center justify-center text-center px-6 overflow-hidden">
-    <div id="hero-bg" class="fixed inset-0 -z-10 bg-cover-fixed"
-         style="background-image:url('https://i.pinimg.com/736x/3e/cb/69/3ecb6925ec07a49229490b5c8e008ef5.jpg');"></div>
-    <div class="absolute inset-0 -z-10 hero-gradient"></div>
-
-    <div class="max-w-4xl mx-auto space-y-5 px-4">
-      <h1 class="hero-title text-4xl sm:text-5xl md:text-6xl font-playfair font-bold text-white drop-shadow-md animate-fadeBounce">
-        Hamza Tariq
-      </h1>
-
-      <p class="text-white/80 max-w-2xl mx-auto text-sm sm:text-base md:text-lg card-entrance">
-        Aspiring web developer, designer & creative learner — building modern responsive websites using HTML, CSS, JavaScript and Tailwind.
-      </p>
-
-      <div class="mt-6 flex items-center justify-center card-entrance">
-  <a href="#contact" class="px-6 py-3 rounded-lg bg-gradient-to-r from-black-500 to-black-700 font-semibold shadow-md hover:scale-105 transition transform">Hire / Contact</a>
+<br><br><br><br>
+    <!-- Hero Section -->
+    <div class="center-text">
+      <p>I AM</p>
+      <h1>HAMZA</h1>
+      <span>WEB DEVELOPER</span>
+    </div>
+<br><br><br><br><br><br><br><br><br>
+    <!-- About Section -->
+    <!-- About Section -->
+<div class="about">
+  <h2>ABOUT</h2>
+  <p id="typed-text"></p>
 </div>
 
-
-      <div class="absolute bottom-6 left-1/2 -translate-x-1/2 text-white/70 animate-bounce">
-        <a href="#about" class="flex flex-col items-center gap-1">
-          <span class="text-xs">Scroll</span>
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-6 h-6" fill="currentColor"><path d="M12 16a1 1 0 0 1-.7-.29l-6-6a1 1 0 1 1 1.4-1.42L12 13.59l5.3-5.3a1 1 0 0 1 1.4 1.42l-6 6A1 1 0 0 1 12 16Z"/></svg>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- MAIN -->
-  <main id="main" class="relative z-10 px-4 sm:px-6 pb-20 -mt-6 space-y-14 max-w-6xl mx-auto">
-
-   
-<section class="relative flex justify-center mt-12 px-4 sm:px-6">
-  <article class="w-full max-w-4xl rounded-3xl p-10 md:p-14 bg-white/5 backdrop-blur-md border border-white/10 shadow-[0_10px_40px_rgba(2,6,23,0.6)] hover:shadow-[0_20px_50px_rgba(2,6,23,0.8)] transition-all duration-500 transform hover:scale-105 card-entrance">
-
-    <!-- Upper Centered Pill -->
-    <div class="text-center mb-6">
-      <div class="inline-block bg-white/10 px-4 py-1 rounded-full text-gray-300 text-sm font-playfair">ABOUT ME</div>
-    </div>
-
-    <div class="md:grid md:grid-cols-2 gap-8 items-start">
-      <!-- Left: About Info -->
-      <div class="space-y-4">
-        <h2 class="font-playfair text-3xl md:text-4xl font-bold text-gray-100">
-          Beginner Web Developer
-        </h2>
-        <p class="text-gray-300 text-sm md:text-base">
-          I'm a passionate and motivated beginner web developer currently learning the basics of 
-          <span class="font-semibold text-white">HTML, CSS, and JavaScript</span>.  
-          I enjoy building simple, creative websites and continuously exploring new technologies.
-        </p>
-        <p class="text-gray-400 text-xs md:text-sm">
-          I believe that practice, curiosity, and consistency are the keys to growth in web development. 
-          This portfolio is a small step in my learning journey, and I'm excited to improve my skills every day.
-        </p>
-        <div class="mt-4 flex flex-col gap-2">
-          <span class="inline-block bg-white/10 px-3 py-1 rounded-full text-xs text-gray-100">📍 Faisalabad, Pakistan</span>
-          <span class="inline-block bg-white/10 px-3 py-1 rounded-full text-xs text-gray-100">💡 Learning & Growing</span>
-        </div>
-      </div>
-
-      <!-- Right: Stats -->
-      <div class="space-y-3 mt-6 md:mt-0">
-        <h3 class="font-playfair text-xl font-semibold text-gray-100">Learning Journey:</h3>
-        <ul class="list-disc list-inside text-gray-300 text-sm md:text-base space-y-1">
-          <li><span class="font-semibold text-white">Learning Duration:</span> 6+ Months</li>
-          <li><span class="font-semibold text-white">Projects Built:</span> 8+</li>
-          <li><span class="font-semibold text-white">Technologies Learning:</span> 5+</li>
-          <li><span class="font-semibold text-white">Online Courses:</span> Many</li>
-        </ul>
-      </div>
-    </div>
-  </article>
-</section>
+  <!-- Education Section -->
+<!-- Education Section -->
 
 
-   <!-- Education Card -->
-<section class="relative flex justify-center mt-12 px-4 sm:px-6">
-  <article class="w-full max-w-4xl rounded-3xl p-10 md:p-14 bg-white/5 backdrop-blur-md border border-white/10 shadow-[0_10px_40px_rgba(2,6,23,0.6)] hover:shadow-[0_20px_50px_rgba(2,6,23,0.8)] transition-all duration-500 transform hover:scale-105 card-entrance">
+<script>
+const text = `I'm a passionate and motivated beginner web developer currently learning the basics of HTML, CSS, and JavaScript. I enjoy building simple, creative websites and continuously exploring new technologies.
 
-    <!-- Upper Centered Pill -->
-    <div class="text-center mb-6">
-      <div class="inline-block bg-white/10 px-4 py-1 rounded-full text-gray-300 text-sm font-playfair">EDUCATION</div>
-    </div>
+I believe that practice, curiosity, and consistency are the keys to growth in web development. This portfolio is a small step in my learning journey, and I'm excited to improve my skills every day.`;
 
-    <div class="md:grid md:grid-cols-2 gap-8 items-start">
-      <!-- Left: University Info -->
-      <div class="space-y-4">
-        <h2 class="font-playfair text-3xl md:text-4xl font-bold text-gray-100">
-          National University of Modern Languages (NUML)
-        </h2>
-        <p class="text-gray-300 text-sm md:text-base">Bachelor of Science in Computer Science</p>
-        <p class="text-gray-400 text-xs md:text-sm">2024 - 2027 | Faisalabad, Pakistan</p>
-        <div class="mt-4 flex flex-col gap-2">
-          <span class="inline-block bg-white/10 px-3 py-1 rounded-full text-xs text-gray-100">Currently Pursuing</span>
-          <span class="inline-block bg-white/10 px-3 py-1 rounded-full text-xs text-gray-100">Focus on Web Development & Programming</span>
-          <span class="inline-block bg-white/10 px-3 py-1 rounded-full text-xs text-gray-100">Active in Coding Communities</span>
-        </div>
-      </div>
+let index = 0;
+const typedText = document.getElementById('typed-text');
 
-      <!-- Right: Coursework -->
-      <div class="space-y-3 mt-6 md:mt-0">
-        <h3 class="font-playfair text-xl font-semibold text-gray-100">Current Coursework:</h3>
-        <ul class="list-disc list-inside text-gray-300 text-sm md:text-base space-y-1">
-          <li>Programming Fundamentals</li>
-          <li>Web Development</li>
-          <li>Database Basics</li>
-          <li>Computer Science Principles</li>
-          <li>Mathematics for CS</li>
-          <li>Problem Solving</li>
-        </ul>
-      </div>
-    </div>
-  </article>
-</section>
+function type() {
+  if (index < text.length) {
+    typedText.innerHTML += text.charAt(index);
+    index++;
+    setTimeout(type, 30); // typing speed
+  }
+}
 
-  <section class="relative flex justify-center mt-12 px-4 sm:px-6">
-  <article class="w-full max-w-4xl rounded-3xl p-10 md:p-14 bg-white/5 backdrop-blur-md border border-white/10 shadow-[0_10px_40px_rgba(2,6,23,0.6)] hover:shadow-[0_20px_50px_rgba(2,6,23,0.8)] transition-all duration-500 transform hover:scale-105 card-entrance">
+type();
+</script>
 
-    <!-- Upper Centered Pill -->
-    <div class="text-center mb-6">
-      <div class="inline-block bg-white/10 px-4 py-1 rounded-full text-gray-300 text-sm font-playfair">WORK EXPERIENCE</div>
-    </div>
-
-    <div class="md:grid md:grid-cols-2 gap-8 items-start">
-      <!-- Left: Company Info -->
-      <div class="space-y-4">
-        <h2 class="font-playfair text-3xl md:text-4xl font-bold text-gray-100">
-          Birdview Logic Academy
-        </h2>
-        <p class="text-gray-300 text-sm md:text-base">Web Development Trainee</p>
-        <p class="text-gray-400 text-xs md:text-sm">2024 - Present | Faisalabad, Pakistan</p>
-        <div class="mt-4 flex flex-col gap-2">
-          <span class="inline-block bg-white/10 px-3 py-1 rounded-full text-xs text-gray-100">Learning Modern Web Technologies</span>
-          <span class="inline-block bg-white/10 px-3 py-1 rounded-full text-xs text-gray-100">Building Real-World Projects</span>
-          <span class="inline-block bg-white/10 px-3 py-1 rounded-full text-xs text-gray-100">Collaborative Learning Environment</span>
-        </div>
-      </div>
-
-      <!-- Right: Focus Areas -->
-      <div class="space-y-3 mt-6 md:mt-0">
-        <h3 class="font-playfair text-xl font-semibold text-gray-100">Current Focus Areas:</h3>
-        <ul class="list-disc list-inside text-gray-300 text-sm md:text-base space-y-1">
-          <li>HTML & CSS</li>
-          <li>JavaScript</li>
-          <li>React Development</li>
-          <li>Responsive Design</li>
-          <li>Version Control (Git)</li>
-          <li>Problem Solving</li>
-        </ul>
-      </div>
-    </div>
-  </article>
-</section>
-<!-- Dark Professional Skills & Learning Card -->
-
-
-
-    <!-- SKILLS -->
-    <section id="skills" class="px-4">
-      <div class="text-center mb-6">
-        <div class="inline-block bg-white/10 px-4 py-1 rounded-full text-gray-300 text-sm font-playfair">SKILLS & TOOLS</div>
-      </div>
-
-      <article class="card-entrance rounded-3xl p-8 bg-white/5 glass border border-white/10 shadow-soft">
-        <div class="space-y-8">
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <!-- skill block -->
-            <div>
-              <div class="flex justify-between text-gray-300 text-sm font-semibold">
-                <span>HTML / CSS</span>
-                <span>75%</span>
-              </div>
-              <div class="w-full bg-white/10 h-4 rounded-full overflow-hidden mt-2">
-                <div class="h-4 rounded-full bg-gradient-to-r from-red-600 to-red-400 skill-bar" data-target="75" style="width:0%"></div>
-              </div>
-            </div>
-
-            <div>
-              <div class="flex justify-between text-gray-300 text-sm font-semibold">
-                <span>JavaScript</span>
-                <span>60%</span>
-              </div>
-              <div class="w-full bg-white/10 h-4 rounded-full overflow-hidden mt-2">
-                <div class="h-4 rounded-full bg-gradient-to-r from-red-600 to-red-400 skill-bar" data-target="60" style="width:0%"></div>
-              </div>
-            </div>
-
-            <div>
-              <div class="flex justify-between text-gray-300 text-sm font-semibold">
-                <span>React Basics</span>
-                <span>45%</span>
-              </div>
-              <div class="w-full bg-white/10 h-4 rounded-full overflow-hidden mt-2">
-                <div class="h-4 rounded-full bg-gradient-to-r from-red-600 to-red-400 skill-bar" data-target="45" style="width:0%"></div>
-              </div>
-            </div>
-
-            <div>
-              <div class="flex justify-between text-gray-300 text-sm font-semibold">
-                <span>Responsive Design</span>
-                <span>70%</span>
-              </div>
-              <div class="w-full bg-white/10 h-4 rounded-full overflow-hidden mt-2">
-                <div class="h-4 rounded-full bg-gradient-to-r from-red-600 to-red-400 skill-bar" data-target="70" style="width:0%"></div>
-              </div>
-            </div>
-
-            <div>
-              <div class="flex justify-between text-gray-300 text-sm font-semibold">
-                <span>Git / GitHub</span>
-                <span>55%</span>
-              </div>
-              <div class="w-full bg-white/10 h-4 rounded-full overflow-hidden mt-2">
-                <div class="h-4 rounded-full bg-gradient-to-r from-red-600 to-red-400 skill-bar" data-target="55" style="width:0%"></div>
-              </div>
-            </div>
-
-            <div>
-              <div class="flex justify-between text-gray-300 text-sm font-semibold">
-                <span>Problem Solving</span>
-                <span>80%</span>
-              </div>
-              <div class="w-full bg-white/10 h-4 rounded-full overflow-hidden mt-2">
-                <div class="h-4 rounded-full bg-gradient-to-r from-red-600 to-red-400 skill-bar" data-target="80" style="width:0%"></div>
-              </div>
-            </div>
-          </div>
-
-          <div>
-            <h4 class="font-playfair text-xl text-gray-100 font-semibold mb-3">Tools & Technologies</h4>
-            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
-              <span class="inline-block bg-white/10 px-3 py-1 rounded-full text-xs text-gray-100 text-center">HTML5</span>
-              <span class="inline-block bg-white/10 px-3 py-1 rounded-full text-xs text-gray-100 text-center">CSS3</span>
-              <span class="inline-block bg-white/10 px-3 py-1 rounded-full text-xs text-gray-100 text-center">JavaScript</span>
-              <span class="inline-block bg-white/10 px-3 py-1 rounded-full text-xs text-gray-100 text-center">React</span>
-              <span class="inline-block bg-white/10 px-3 py-1 rounded-full text-xs text-gray-100 text-center">Git</span>
-              <span class="inline-block bg-white/10 px-3 py-1 rounded-full text-xs text-gray-100 text-center">VS Code</span>
-              <span class="inline-block bg-white/10 px-3 py-1 rounded-full text-xs text-gray-100 text-center">Figma</span>
-              <span class="inline-block bg-white/10 px-3 py-1 rounded-full text-xs text-gray-100 text-center">Bootstrap</span>
-            </div>
-          </div>
-        </div>
-      </article>
-    </section>
-
-    <!-- CONTACT -->
-    <section id="contact" class="px-4">
-      <div class="text-center mb-6">
-        <div class="inline-block bg-white/10 px-4 py-1 rounded-full text-gray-300 text-sm font-playfair">LET'S CONNECT</div>
-      </div>
-
-      <article class="card-entrance rounded-3xl p-8 bg-white/5 glass border border-white/10 shadow-soft">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div>
-            <h3 class="font-playfair text-2xl text-gray-100 font-semibold">Get in touch</h3>
-            <p class="text-gray-300 mt-2">I'm open to feedback, collaboration, or freelance projects. Reach me via email or the form.</p>
-
-            <div class="mt-6 space-y-3 text-gray-300">
-              <div>
-                <h4 class="font-semibold">Email</h4>
-                <p>iamhamzatq@gmail.com</p>
-              </div>
-              <div>
-                <h4 class="font-semibold">Location</h4>
-                <p>Faisalabad, Pakistan</p>
-              </div>
-              <div class="mt-4">
-                <a href="mailto:iamhamzatq@gmail.com" class="inline-flex items-center gap-2 px-4 py-2 rounded-md bg-white/6 hover:bg-white/8">Email Me</a>
-              </div>
-            </div>
-          </div>
-
-          <div>
-            <form id="contactForm" class="space-y-4" novalidate>
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-                <input type="text" id="c_name" placeholder="Your name" required class="w-full rounded-lg p-3 placeholder-gray-400 text-gray-200 focus:outline-none focus:ring-2 focus:ring-red-500/30 transition glass" />
-                <input type="email" id="c_email" placeholder="Your email" required class="w-full rounded-lg p-3 placeholder-gray-400 text-gray-200 focus:outline-none focus:ring-2 focus:ring-red-500/30 transition glass" />
-              </div>
-              <textarea id="c_message" rows="5" placeholder="Your message" class="w-full rounded-lg p-3 placeholder-gray-400 text-gray-200 focus:outline-none focus:ring-2 focus:ring-red-500/30 transition glass"></textarea>
-
-              <div class="flex items-center justify-between gap-3">
-                <button type="submit" class="px-6 py-3 rounded-lg bg-gradient-to-r from-red-500 to-red-600 font-semibold hover:scale-105 transition transform">Send Message</button>
-                <div class="text-sm text-gray-400 hidden md:block">Or email directly: <a href="mailto:iamhamzatq@gmail.com" class="text-gray-200 underline">iamhamzatq@gmail.com</a></div>
-              </div>
-            </form>
-          </div>
-        </div>
-
-        <!-- toast -->
-        <div id="formToast" class="mt-6 fixed right-6 bottom-6 bg-gray-900/95 text-white px-6 py-3 rounded-lg shadow-lg toast-hidden transition-all duration-300">Message sent — thank you!</div>
-      </article>
-    </section>
-
-    <!-- FOOTER -->
-    <footer class="mt-10 text-center text-gray-400 text-sm">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6 pb-8">
-        <p>© <span id="year"></span> Hamza Tariq — web developer</p>
-        <div class="mt-3 flex items-center justify-center gap-3">
-          <a href="#" class="text-gray-300 hover:text-redish">GitHub</a>
-          <span class="text-gray-600">•</span>
-          <a href="#" class="text-gray-300 hover:text-redish">LinkedIn</a>
-          <span class="text-gray-600">•</span>
-          <a href="#" class="text-gray-300 hover:text-redish">Twitter</a>
-        </div>
-      </div>
-    </footer>
-  </main>
-
-  <!-- SCRIPTS -->
-  <script>
-    /* -------------------------
-       Small utility references
-       ------------------------- */
-    const doc = document;
-    const mobileMenu = doc.getElementById('mobile-menu');
-    const menuBtn = doc.getElementById('menu-btn');
-
-    /* -------------------------
-       Mobile menu toggle (smooth)
-       ------------------------- */
-    menuBtn.addEventListener('click', () => {
-      const panel = mobileMenu.querySelector('.mobile-panel');
-      if (!panel) return;
-      if (panel.classList.contains('pointer-events-none')) {
-        // show
-        panel.classList.remove('pointer-events-none', 'opacity-0', 'translate-y-3');
-        panel.classList.add('opacity-100', 'translate-y-0');
-      } else {
-        // hide
-        panel.classList.add('opacity-0', 'translate-y-3');
-        setTimeout(() => {
-          panel.classList.add('pointer-events-none');
-          panel.classList.remove('opacity-100', 'translate-y-0');
-        }, 220);
-      }
-    });
-
-    /* -------------------------
-       Background blur effect on scroll (smooth)
-       ------------------------- */
-    (function () {
-      let latestScroll = 0;
-      const bg = doc.getElementById('hero-bg');
-      window.addEventListener('scroll', () => latestScroll = window.scrollY);
-      function smoothBlur() {
-        const blurVal = Math.min(latestScroll / 60, 8);
-        bg.style.filter = `blur(${blurVal}px)`;
-        requestAnimationFrame(smoothBlur);
-      }
-      requestAnimationFrame(smoothBlur);
-    })();
-
-    /* -------------------------
-       IntersectionObserver for entrances & skill bars
-       ------------------------- */
-    (function () {
-      const observer = new IntersectionObserver((entries, obs) => {
-        entries.forEach(entry => {
-          if (!entry.isIntersecting) return;
-          const el = entry.target;
-
-          // reveal card-entrance
-          if (el.classList.contains('card-entrance')) {
-            el.classList.add('show');
-          }
-
-          // if it contains skill-bar elements, animate them
-          const bars = el.querySelectorAll('.skill-bar');
-          bars.forEach(bar => {
-            const target = parseInt(bar.getAttribute('data-target') || '0', 10);
-            bar.style.width = target + '%';
-          });
-
-          obs.unobserve(el);
-        });
-      }, { threshold: 0.18 });
-
-      // observe all .card-entrance blocks
-      const cards = doc.querySelectorAll('.card-entrance');
-      cards.forEach(c => observer.observe(c));
-
-      // also observe each project card separately (if not same element)
-      const projectCards = doc.querySelectorAll('.tilt-card');
-      projectCards.forEach(c => observer.observe(c));
-    })();
-
-    /* -------------------------
-       Portfolio tilt effect (lightweight)
-       ------------------------- */
-    (function () {
-      const tiltCards = document.querySelectorAll('[data-tilt]');
-      tiltCards.forEach(card => {
-        const container = card;
-        const inner = card.querySelector('.tilt-inner') || card;
-
-        function handleMove(e) {
-          const rect = container.getBoundingClientRect();
-          const x = (e.clientX - rect.left) / rect.width; // 0..1
-          const y = (e.clientY - rect.top) / rect.height; // 0..1
-          const rotateY = (x - 0.5) * 14; // degrees
-          const rotateX = (0.5 - y) * 10;
-          const translateZ = 18;
-
-          container.style.transform = `perspective(1200px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-          inner.style.transform = `translateZ(${translateZ}px)`;
-        }
-
-        function handleLeave() {
-          container.style.transform = 'perspective(1200px) rotateX(0deg) rotateY(0deg)';
-          inner.style.transform = 'translateZ(0px)';
-        }
-
-        container.addEventListener('mousemove', handleMove);
-        container.addEventListener('touchmove', (ev) => {
-          if(ev.touches && ev.touches[0]) handleMove(ev.touches[0]);
-        }, {passive:true});
-        container.addEventListener('mouseleave', handleLeave);
-        container.addEventListener('touchend', handleLeave);
-      });
-    })();
-
-    /* -------------------------
-       Contact form handling (front-end only)
-       ------------------------- */
-    (function () {
-      const form = doc.getElementById('contactForm');
-      const toast = doc.getElementById('formToast');
-
-      function showToast(message = 'Sent', timeout = 2000) {
-        toast.textContent = message;
-        toast.classList.remove('toast-hidden');
-        toast.classList.add('toast-show');
-        setTimeout(() => {
-          toast.classList.remove('toast-show');
-          toast.classList.add('toast-hidden');
-        }, timeout);
-      }
-
-      if (form) {
-        form.addEventListener('submit', (e) => {
-          e.preventDefault();
-          const name = doc.getElementById('c_name').value.trim();
-          const email = doc.getElementById('c_email').value.trim();
-          const message = doc.getElementById('c_message').value.trim();
-
-          if (!name || !email || !message) {
-            showToast('Please fill all fields', 1800);
-            return;
-          }
-
-          // TODO: Replace with actual backend call (fetch)
-          showToast('Message sent — thank you!', 2000);
-          form.reset();
-        });
-      }
-    })();
-
-    /* -------------------------
-       Set current year in footer
-       ------------------------- */
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
 </body>
 </html>
 
