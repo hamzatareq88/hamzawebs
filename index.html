@@ -1,194 +1,204 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Hamza Portfolio</title>
-<script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "t2fp42ljpx");
-</script>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-YJS0BGC4HR"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Hamza Tariq — Portfolio</title>
+  <meta name="description" content="Hamza Tariq - Aspiring web developer from Faisalabad. HTML, CSS, JS, React, Tailwind. Projects, skills and contact." />
 
-  gtag('config', 'G-YJS0BGC4HR');
-</script>
-
-<!-- Google Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600;800&family=Playfair+Display+SC:wght@400;700&display=swap" rel="stylesheet">
-
-<!-- Tailwind CDN -->
-<script src="https://cdn.tailwindcss.com"></script>
-<script>
-tailwind.config = {
-  theme: {
-    extend: {
-      fontFamily: {
-        sans: ['Montserrat', 'sans-serif'],
-        playfair: ['"Playfair Display SC"', 'serif'],
-      },
-      colors: {
-        redish: '#da0202'
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Montserrat', 'sans-serif'],
+            playfair: ['"Playfair Display SC"', 'serif'],
+          },
+          colors: {
+            redish: '#da0202',
+          },
+          boxShadow: {
+            soft: '0 10px 40px rgba(2,6,23,0.6)',
+            softHover: '0 20px 50px rgba(2,6,23,0.8)',
+          }
+        }
       }
+    };
+  </script>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600;800&family=Playfair+Display+SC:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* -------------------------
+       Base + helpers
+       ------------------------- */
+    html { scroll-behavior: smooth; }
+    body { background: #070707; -webkit-font-smoothing:antialiased; }
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.06); border-radius: 8px; }
+
+    /* -------------------------
+       Animations & Entrance
+       ------------------------- */
+    @keyframes fadeBounce {
+      0% { opacity: 0; transform: translateY(34px) scale(0.97); }
+      45% { opacity: 1; transform: translateY(-6px) scale(1.03); }
+      70% { transform: translateY(0) scale(0.99); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
     }
-  }
-}
-</script>
+    .animate-fadeBounce { animation: fadeBounce 1.15s cubic-bezier(.2,.9,.2,1) both; }
 
+    .card-entrance {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: all 0.68s cubic-bezier(.2,.9,.2,1);
+      will-change: transform, opacity;
+    }
+    .card-entrance.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
 
-<style>
-html { scroll-behavior: smooth; }
-body { background: #0b0b0b; }
-::-webkit-scrollbar { width: 0; height: 0; }
+    /* -------------------------
+       Nav link underline
+       ------------------------- */
+    .nav-link { position: relative; }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      width: 0%;
+      height: 2px;
+      bottom: -4px;
+      left: 0;
+      background: linear-gradient(90deg,#ff6b6b,#f3eff1);
+      transition: width .28s ease-in-out;
+    }
+    .nav-link:hover::after { width:100%; }
 
-/* Card Animations */
-@keyframes enterUp {0% { opacity: 0; transform: translateY(18px) scale(0.995);} 100% { opacity: 1; transform: translateY(0) scale(1);}}
-@keyframes float {0%,100% { transform: translateY(0);} 50% { transform: translateY(-6px);}}
-.card-entrance { animation: enterUp 0.7s cubic-bezier(.2,.9,.2,1) both; }
-.floating { animation: float 6s ease-in-out infinite; }
-/* Scroll animation */
-.reveal {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: all 0.8s ease-out;
-}
+    /* -------------------------
+       Hero decorations
+       ------------------------- */
+    .bg-cover-fixed { background-position: center; background-size: cover; background-repeat: no-repeat; }
+    .hero-gradient {
+      background: linear-gradient(180deg, rgba(10,10,10,0.15), rgba(7,7,7,0.85));
+    }
 
-.reveal.show {
-  opacity: 1;
-  transform: translateY(0);
-}
+    /* -------------------------
+       Portfolio 3D tilt
+       ------------------------- */
+    .tilt {
+      transform-style: preserve-3d;
+      transition: transform 300ms cubic-bezier(.2,.9,.2,1), box-shadow 200ms;
+      will-change: transform;
+      perspective: 1200px;
+    }
+    .tilt-inner {
+      transform: translateZ(0);
+      transition: transform 300ms cubic-bezier(.2,.9,.2,1);
+    }
 
+    /* simple shadow/hover lift */
+    .card-hover {
+      box-shadow: 0 8px 30px rgba(2,6,23,0.5);
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+    .card-hover:hover { transform: translateY(-10px) scale(1.01); box-shadow: 0 22px 70px rgba(2,6,23,0.8); }
 
-/* Navbar links */
-.nav-link::after { content: ''; position: absolute; width: 0%; height: 2px; bottom: -3px; left: 0; background: linear-gradient(to right, #da0202, #f3eff1); transition: width 0.3s ease-in-out; }
-.nav-link:hover::after { width: 100%; }
-</style>
+    /* -------------------------
+       Progress bars (animated)
+       ------------------------- */
+    .skill-bar { transition: width 1.2s cubic-bezier(.2,.9,.2,1); height: 100%; border-radius: 999px; }
 
+    /* -------------------------
+       Toast helpers
+       ------------------------- */
+    .toast-hidden { opacity: 0; transform: translateY(10px); pointer-events: none; }
+    .toast-show { opacity: 1; transform: translateY(0); pointer-events: auto; }
 
+    /* -------------------------
+       Glassy form focus
+       ------------------------- */
+    .glass {
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+      border: 1px solid rgba(255,255,255,0.04);
+      backdrop-filter: blur(6px);
+    }
+
+    /* small responsive tweaks */
+    @media (max-width:640px) {
+      .hero-title { font-size: 28px; }
+    }
+  </style>
 </head>
 <body class="font-sans text-white">
 
-<!-- Navbar -->
-<nav class="bg-black text-white px-6 py-3 flex items-center justify-between rounded-full shadow-lg max-w-4xl mx-auto mt-4">
-<span class="font-playfair text-lg">Hamza</span>
-<div class="hidden md:flex items-center space-x-8">
-<a href="#home" class="nav-link relative font-medium text-gray-300">Home</a>
-<a href="#about" class="nav-link relative font-medium text-gray-300">About</a>
-<a href="#portfolio" class="nav-link relative font-medium text-gray-300">Portfolio</a>
-<a href="#contact" class="nav-link relative font-medium text-gray-300">Contact</a>
-</div>
-<button id="menu-btn" class="md:hidden text-2xl focus:outline-none">&#9776;</button>
-</nav>
-<div id="menu" class="hidden flex flex-col items-center space-y-4 mt-3 bg-black text-white rounded-xl py-5 max-w-4xl mx-auto md:hidden">
-<a href="#home" class="px-6 py-2 hover:text-redish">Home</a>
-<a href="#about" class="px-6 py-2 hover:text-redish">About</a>
-<a href="#portfolio" class="px-6 py-2 hover:text-redish">Portfolio</a>
-<a href="#contact" class="px-6 py-2 hover:text-redish">Contact</a>
-</div>
-<script>
-const btn = document.getElementById('menu-btn');
-const menu = document.getElementById('menu');
-btn.addEventListener('click', () => menu.classList.toggle('hidden'));
-</script>
+  <!-- NAVBAR -->
+  <header class="sticky top-4 z-50">
+    <nav class="max-w-6xl mx-auto px-6 md:px-8 bg-black/50 backdrop-blur-lg rounded-full shadow-soft py-3 flex items-center justify-between">
+      <a href="#home" class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-full bg-gradient-to-r from-red-500 to-redish flex items-center justify-center text-white font-bold">HT</div>
+        <span class="font-playfair text-lg">Hamza</span>
+      </a>
 
-<!-- Hero -->
-<header id="home" class="relative h-screen flex flex-col items-center justify-center text-center px-6 overflow-hidden">
-<div id="bg" class="fixed inset-0 bg-center bg-cover -z-10 transition-all duration-700"
-     style="background-image : url('https://i.pinimg.com/736x/65/d7/66/65d7662ec254e5ab350d45cf5923dc70.jpg'); filter: blur(0px);"></div>
-
-
-<div id="overlay" class="absolute inset-0 -z-10 bg-black/60 transition-opacity duration-700"></div>
-<h1 class="text-4xl sm:text-5xl md:text-6xl font-playfair font-bold text-gray-100 animate-fadeBounce">
-  Hamza Tariq
-</h1>
-<h5 class="mt-4 max-w-sm sm:max-w-md md:max-w-lg text-white/80 text-sm sm:text-base card-entrance">Aspiring web developer, designer & creative learner</h5>
-<h5 class="mt-4 max-w-sm sm:max-w-md md:max-w-lg text-white/80 text-sm sm:text-base card-entrance"><b>Faisalabad, Pakistan</b></h5>
-
-<a href="#content" class="absolute bottom-6 flex flex-col items-center gap-1 text-white/70 animate-bounce">
-<span class="text-xs">Scroll</span>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-6 h-6" fill="currentColor"><path d="M12 16a1 1 0 0 1-.7-.29l-6-6a1 1 0 1 1 1.4-1.42L12 13.59l5.3-5.3a1 1 0 0 1 1.4 1.42l-6 6A1 1 0 0 1 12 16Z"/></svg>
-</a>
-</header>
-
-<!-- Main Content -->
-<main id="content" class="relative z-10 px-4 sm:px-6 pb-16 -mt-6 space-y-16 max-w-5xl mx-auto">
-  <!-- About, Education, Work, Skills, Connect cards go here -->
-  <!-- Keep your existing HTML for all cards -->
-</main>
-
-<script>
-// Background blur on scroll
-// Smooth background blur
-let latestScroll = 0;
-
-window.addEventListener('scroll', () => {
-  latestScroll = window.scrollY;
-});
-
-function smoothBlur(){
-  const bg = document.getElementById('bg');
-  const blur = Math.min(latestScroll / 50, 8);
-  bg.style.filter = `blur(${blur}px)`;
-  requestAnimationFrame(smoothBlur);
-}
-
-requestAnimationFrame(smoothBlur);
-
-
-// Skills bar animation on scroll
-const skillItems = document.querySelectorAll('.skill-item');
-const observer = new IntersectionObserver((entries) => {
-entries.forEach(entry => {
-if(entry.isIntersecting){
-const bar = entry.target.querySelector('.skill-bar');
-if(bar){
-bar.style.width = bar.getAttribute('style').match(/width:\d+%/)[0].split(':')[1];
-}
-}
-});
-}, {threshold:0.3});
-skillItems.forEach(item => observer.observe(item));
-</script>
-    <!-- About Card -->
-<!-- About Me Card -->
-<section class="relative flex justify-center mt-[-6rem] px-4 sm:px-6">
-  <article class="reveal w-full max-w-4xl rounded-3xl p-10 md:p-14 bg-white/5 ...">
-
-
-    <!-- Upper Centered Pill -->
-    <div class="text-center mb-6">
-      <div class="inline-block bg-white/10 px-4 py-1 rounded-full text-gray-300 text-sm font-playfair">ABOUT ME</div>
-    </div>
-
-    <div class="md:grid md:grid-cols-2 gap-8 items-center">
-      <!-- Left Content -->
-      <div class="space-y-4">
-        <h2 class="font-playfair text-3xl md:text-5xl font-bold text-gray-100">
-          Hamza Tariq
-        </h2>
-        <p class="text-gray-300 mt-3 text-sm md:text-base leading-relaxed max-w-xl mx-auto">
-          I'm a passionate and motivated beginner web developer currently learning the basics of HTML, CSS, and JavaScript. I enjoy building simple, creative websites and continuously exploring new technologies.
-          I believe that practice, curiosity, and consistency are the keys to growth in web development. This portfolio is a small step in my learning journey, and I'm excited to improve my skills every day.
-        </p>
-        <div class="mt-6 flex flex-wrap justify-center gap-3">
-          <span class="inline-flex items-center gap-2 bg-white/10 px-3 py-1 rounded-full text-xs text-gray-100">React</span>
-          <span class="inline-flex items-center gap-2 bg-white/10 px-3 py-1 rounded-full text-xs text-gray-100">Tailwind</span>
-          <span class="inline-flex items-center gap-2 bg-white/10 px-3 py-1 rounded-full text-xs text-gray-100">Curious Learner</span>
-        </div>
+      <div class="hidden md:flex items-center gap-8">
+        <a href="#home" class="nav-link text-gray-300 font-medium">Home</a>
+        <a href="#about" class="nav-link text-gray-300 font-medium">About</a>
+        <a href="#portfolio" class="nav-link text-gray-300 font-medium">Portfolio</a>
+        <a href="#skills" class="nav-link text-gray-300 font-medium">Skills</a>
+        <a href="#contact" class="nav-link text-gray-300 font-medium">Contact</a>
       </div>
 
-      <!-- Right Image -->
-      
+      <button id="menu-btn" aria-label="Open menu" class="md:hidden text-2xl text-gray-200 focus:outline-none">☰</button>
+    </nav>
+
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="max-w-6xl mx-auto px-6 md:px-8 mt-3 md:hidden">
+      <div class="mobile-panel bg-black/70 glass rounded-xl py-4 px-4 flex flex-col gap-2 opacity-0 translate-y-3 pointer-events-none transition-all duration-300">
+        <a href="#home" class="py-2 px-3 rounded-md hover:text-redish">Home</a>
+        <a href="#about" class="py-2 px-3 rounded-md hover:text-redish">About</a>
+        <a href="#portfolio" class="py-2 px-3 rounded-md hover:text-redish">Portfolio</a>
+        <a href="#skills" class="py-2 px-3 rounded-md hover:text-redish">Skills</a>
+        <a href="#contact" class="py-2 px-3 rounded-md hover:text-redish">Contact</a>
+      </div>
     </div>
-  </article>
-</section>
+  </header>
+
+  <!-- HERO -->
+  <section id="home" class="relative h-screen flex items-center justify-center text-center px-6 overflow-hidden">
+    <div id="hero-bg" class="fixed inset-0 -z-10 bg-cover-fixed"
+         style="background-image:url('https://i.pinimg.com/736x/3e/cb/69/3ecb6925ec07a49229490b5c8e008ef5.jpg');"></div>
+    <div class="absolute inset-0 -z-10 hero-gradient"></div>
+
+    <div class="max-w-4xl mx-auto space-y-5 px-4">
+      <h1 class="hero-title text-4xl sm:text-5xl md:text-6xl font-playfair font-bold text-white drop-shadow-md animate-fadeBounce">
+        Hamza Tariq
+      </h1>
+
+      <p class="text-white/80 max-w-2xl mx-auto text-sm sm:text-base md:text-lg card-entrance">
+        Aspiring web developer, designer & creative learner — building modern responsive websites using HTML, CSS, JavaScript and Tailwind.
+      </p>
+
+      <div class="mt-6 flex items-center justify-center card-entrance">
+  <a href="#contact" class="px-6 py-3 rounded-lg bg-gradient-to-r from-black-500 to-black-700 font-semibold shadow-md hover:scale-105 transition transform">Hire / Contact</a>
+</div>
+
+
+      <div class="absolute bottom-6 left-1/2 -translate-x-1/2 text-white/70 animate-bounce">
+        <a href="#about" class="flex flex-col items-center gap-1">
+          <span class="text-xs">Scroll</span>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-6 h-6" fill="currentColor"><path d="M12 16a1 1 0 0 1-.7-.29l-6-6a1 1 0 1 1 1.4-1.42L12 13.59l5.3-5.3a1 1 0 0 1 1.4 1.42l-6 6A1 1 0 0 1 12 16Z"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN -->
+  <main id="main" class="relative z-10 px-4 sm:px-6 pb-20 -mt-6 space-y-14 max-w-6xl mx-auto">
+
+   
 <section class="relative flex justify-center mt-12 px-4 sm:px-6">
   <article class="w-full max-w-4xl rounded-3xl p-10 md:p-14 bg-white/5 backdrop-blur-md border border-white/10 shadow-[0_10px_40px_rgba(2,6,23,0.6)] hover:shadow-[0_20px_50px_rgba(2,6,23,0.8)] transition-all duration-500 transform hover:scale-105 card-entrance">
 
@@ -233,7 +243,7 @@ skillItems.forEach(item => observer.observe(item));
 </section>
 
 
-<!-- Education Card -->
+   <!-- Education Card -->
 <section class="relative flex justify-center mt-12 px-4 sm:px-6">
   <article class="w-full max-w-4xl rounded-3xl p-10 md:p-14 bg-white/5 backdrop-blur-md border border-white/10 shadow-[0_10px_40px_rgba(2,6,23,0.6)] hover:shadow-[0_20px_50px_rgba(2,6,23,0.8)] transition-all duration-500 transform hover:scale-105 card-entrance">
 
@@ -272,8 +282,8 @@ skillItems.forEach(item => observer.observe(item));
     </div>
   </article>
 </section>
-<!-- Work Experience Card -->
-<section class="relative flex justify-center mt-12 px-4 sm:px-6">
+
+  <section class="relative flex justify-center mt-12 px-4 sm:px-6">
   <article class="w-full max-w-4xl rounded-3xl p-10 md:p-14 bg-white/5 backdrop-blur-md border border-white/10 shadow-[0_10px_40px_rgba(2,6,23,0.6)] hover:shadow-[0_20px_50px_rgba(2,6,23,0.8)] transition-all duration-500 transform hover:scale-105 card-entrance">
 
     <!-- Upper Centered Pill -->
@@ -312,258 +322,317 @@ skillItems.forEach(item => observer.observe(item));
   </article>
 </section>
 <!-- Dark Professional Skills & Learning Card -->
-<section class="relative flex justify-center mt-12 px-4 sm:px-6">
-  <article class="w-full max-w-4xl rounded-3xl p-10 md:p-14 bg-white/5 backdrop-blur-md border border-white/10 shadow-[0_10px_40px_rgba(2,6,23,0.6)] hover:shadow-[0_20px_50px_rgba(2,6,23,0.8)] transition-all duration-500 transform hover:scale-105 card-entrance">
 
-    <!-- Upper Centered Pill -->
-    <div class="text-center mb-8">
-      <div class="inline-block bg-white/10 px-4 py-1 rounded-full text-gray-300 text-sm font-playfair tracking-wide">SKILLS & LEARNING</div>
-    </div>
 
-    <div class="space-y-10">
-      <!-- Progress Bars -->
-      <div class="space-y-6">
-        <!-- Skill Item Template -->
-        <template id="skill-template">
-          <div class="space-y-1">
-            <div class="flex justify-between text-gray-300 text-sm font-semibold">
-              <span class="skill-name">Skill Name</span>
-              <span class="skill-percent">0%</span>
-            </div>
-            <div class="w-full bg-white/10 h-4 rounded-full overflow-hidden">
-              <div class="h-4 rounded-full bg-gradient-to-r from-red-600 to-red-400 skill-bar" style="width:0%"></div>
-            </div>
-          </div>
-        </template>
 
-        <!-- Individual Skills -->
-        <div class="skill-item">
-          <div class="flex justify-between text-gray-300 text-sm font-semibold">
-            <span>HTML/CSS</span>
-            <span>75%</span>
-          </div>
-          <div class="w-full bg-white/10 h-4 rounded-full overflow-hidden">
-            <div class="h-4 rounded-full bg-gradient-to-r from-red-600 to-red-400" style="width:75%"></div>
-          </div>
-        </div>
-
-        <div class="skill-item">
-          <div class="flex justify-between text-gray-300 text-sm font-semibold">
-            <span>JavaScript</span>
-            <span>60%</span>
-          </div>
-          <div class="w-full bg-white/10 h-4 rounded-full overflow-hidden">
-            <div class="h-4 rounded-full bg-gradient-to-r from-red-600 to-red-400" style="width:60%"></div>
-          </div>
-        </div>
-
-        <div class="skill-item">
-          <div class="flex justify-between text-gray-300 text-sm font-semibold">
-            <span>React Basics</span>
-            <span>45%</span>
-          </div>
-          <div class="w-full bg-white/10 h-4 rounded-full overflow-hidden">
-            <div class="h-4 rounded-full bg-gradient-to-r from-red-600 to-red-400" style="width:45%"></div>
-          </div>
-        </div>
-
-        <div class="skill-item">
-          <div class="flex justify-between text-gray-300 text-sm font-semibold">
-            <span>Responsive Design</span>
-            <span>70%</span>
-          </div>
-          <div class="w-full bg-white/10 h-4 rounded-full overflow-hidden">
-            <div class="h-4 rounded-full bg-gradient-to-r from-red-600 to-red-400" style="width:70%"></div>
-          </div>
-        </div>
-
-        <div class="skill-item">
-          <div class="flex justify-between text-gray-300 text-sm font-semibold">
-            <span>Git/GitHub</span>
-            <span>55%</span>
-          </div>
-          <div class="w-full bg-white/10 h-4 rounded-full overflow-hidden">
-            <div class="h-4 rounded-full bg-gradient-to-r from-red-600 to-red-400" style="width:55%"></div>
-          </div>
-        </div>
-
-        <div class="skill-item">
-          <div class="flex justify-between text-gray-300 text-sm font-semibold">
-            <span>Problem Solving</span>
-            <span>80%</span>
-          </div>
-          <div class="w-full bg-white/10 h-4 rounded-full overflow-hidden">
-            <div class="h-4 rounded-full bg-gradient-to-r from-red-600 to-red-400" style="width:80%"></div>
-          </div>
-        </div>
+    <!-- SKILLS -->
+    <section id="skills" class="px-4">
+      <div class="text-center mb-6">
+        <div class="inline-block bg-white/10 px-4 py-1 rounded-full text-gray-300 text-sm font-playfair">SKILLS & TOOLS</div>
       </div>
 
-      <!-- Tools & Technologies -->
-      <div>
-        <h3 class="font-playfair text-xl font-semibold text-gray-100 mb-4 tracking-wide">Tools & Technologies:</h3>
-        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
-          <span class="inline-block bg-white/10 px-3 py-1 rounded-full text-xs text-gray-100 text-center">HTML5</span>
-          <span class="inline-block bg-white/10 px-3 py-1 rounded-full text-xs text-gray-100 text-center">CSS3</span>
-          <span class="inline-block bg-white/10 px-3 py-1 rounded-full text-xs text-gray-100 text-center">JavaScript</span>
-          <span class="inline-block bg-white/10 px-3 py-1 rounded-full text-xs text-gray-100 text-center">React</span>
-          <span class="inline-block bg-white/10 px-3 py-1 rounded-full text-xs text-gray-100 text-center">Git</span>
-          <span class="inline-block bg-white/10 px-3 py-1 rounded-full text-xs text-gray-100 text-center">VS Code</span>
-          <span class="inline-block bg-white/10 px-3 py-1 rounded-full text-xs text-gray-100 text-center">Figma</span>
-          <span class="inline-block bg-white/10 px-3 py-1 rounded-full text-xs text-gray-100 text-center">Bootstrap</span>
+      <article class="card-entrance rounded-3xl p-8 bg-white/5 glass border border-white/10 shadow-soft">
+        <div class="space-y-8">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- skill block -->
+            <div>
+              <div class="flex justify-between text-gray-300 text-sm font-semibold">
+                <span>HTML / CSS</span>
+                <span>75%</span>
+              </div>
+              <div class="w-full bg-white/10 h-4 rounded-full overflow-hidden mt-2">
+                <div class="h-4 rounded-full bg-gradient-to-r from-red-600 to-red-400 skill-bar" data-target="75" style="width:0%"></div>
+              </div>
+            </div>
+
+            <div>
+              <div class="flex justify-between text-gray-300 text-sm font-semibold">
+                <span>JavaScript</span>
+                <span>60%</span>
+              </div>
+              <div class="w-full bg-white/10 h-4 rounded-full overflow-hidden mt-2">
+                <div class="h-4 rounded-full bg-gradient-to-r from-red-600 to-red-400 skill-bar" data-target="60" style="width:0%"></div>
+              </div>
+            </div>
+
+            <div>
+              <div class="flex justify-between text-gray-300 text-sm font-semibold">
+                <span>React Basics</span>
+                <span>45%</span>
+              </div>
+              <div class="w-full bg-white/10 h-4 rounded-full overflow-hidden mt-2">
+                <div class="h-4 rounded-full bg-gradient-to-r from-red-600 to-red-400 skill-bar" data-target="45" style="width:0%"></div>
+              </div>
+            </div>
+
+            <div>
+              <div class="flex justify-between text-gray-300 text-sm font-semibold">
+                <span>Responsive Design</span>
+                <span>70%</span>
+              </div>
+              <div class="w-full bg-white/10 h-4 rounded-full overflow-hidden mt-2">
+                <div class="h-4 rounded-full bg-gradient-to-r from-red-600 to-red-400 skill-bar" data-target="70" style="width:0%"></div>
+              </div>
+            </div>
+
+            <div>
+              <div class="flex justify-between text-gray-300 text-sm font-semibold">
+                <span>Git / GitHub</span>
+                <span>55%</span>
+              </div>
+              <div class="w-full bg-white/10 h-4 rounded-full overflow-hidden mt-2">
+                <div class="h-4 rounded-full bg-gradient-to-r from-red-600 to-red-400 skill-bar" data-target="55" style="width:0%"></div>
+              </div>
+            </div>
+
+            <div>
+              <div class="flex justify-between text-gray-300 text-sm font-semibold">
+                <span>Problem Solving</span>
+                <span>80%</span>
+              </div>
+              <div class="w-full bg-white/10 h-4 rounded-full overflow-hidden mt-2">
+                <div class="h-4 rounded-full bg-gradient-to-r from-red-600 to-red-400 skill-bar" data-target="80" style="width:0%"></div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <h4 class="font-playfair text-xl text-gray-100 font-semibold mb-3">Tools & Technologies</h4>
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+              <span class="inline-block bg-white/10 px-3 py-1 rounded-full text-xs text-gray-100 text-center">HTML5</span>
+              <span class="inline-block bg-white/10 px-3 py-1 rounded-full text-xs text-gray-100 text-center">CSS3</span>
+              <span class="inline-block bg-white/10 px-3 py-1 rounded-full text-xs text-gray-100 text-center">JavaScript</span>
+              <span class="inline-block bg-white/10 px-3 py-1 rounded-full text-xs text-gray-100 text-center">React</span>
+              <span class="inline-block bg-white/10 px-3 py-1 rounded-full text-xs text-gray-100 text-center">Git</span>
+              <span class="inline-block bg-white/10 px-3 py-1 rounded-full text-xs text-gray-100 text-center">VS Code</span>
+              <span class="inline-block bg-white/10 px-3 py-1 rounded-full text-xs text-gray-100 text-center">Figma</span>
+              <span class="inline-block bg-white/10 px-3 py-1 rounded-full text-xs text-gray-100 text-center">Bootstrap</span>
+            </div>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="px-4">
+      <div class="text-center mb-6">
+        <div class="inline-block bg-white/10 px-4 py-1 rounded-full text-gray-300 text-sm font-playfair">LET'S CONNECT</div>
+      </div>
+
+      <article class="card-entrance rounded-3xl p-8 bg-white/5 glass border border-white/10 shadow-soft">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <h3 class="font-playfair text-2xl text-gray-100 font-semibold">Get in touch</h3>
+            <p class="text-gray-300 mt-2">I'm open to feedback, collaboration, or freelance projects. Reach me via email or the form.</p>
+
+            <div class="mt-6 space-y-3 text-gray-300">
+              <div>
+                <h4 class="font-semibold">Email</h4>
+                <p>iamhamzatq@gmail.com</p>
+              </div>
+              <div>
+                <h4 class="font-semibold">Location</h4>
+                <p>Faisalabad, Pakistan</p>
+              </div>
+              <div class="mt-4">
+                <a href="mailto:iamhamzatq@gmail.com" class="inline-flex items-center gap-2 px-4 py-2 rounded-md bg-white/6 hover:bg-white/8">Email Me</a>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <form id="contactForm" class="space-y-4" novalidate>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                <input type="text" id="c_name" placeholder="Your name" required class="w-full rounded-lg p-3 placeholder-gray-400 text-gray-200 focus:outline-none focus:ring-2 focus:ring-red-500/30 transition glass" />
+                <input type="email" id="c_email" placeholder="Your email" required class="w-full rounded-lg p-3 placeholder-gray-400 text-gray-200 focus:outline-none focus:ring-2 focus:ring-red-500/30 transition glass" />
+              </div>
+              <textarea id="c_message" rows="5" placeholder="Your message" class="w-full rounded-lg p-3 placeholder-gray-400 text-gray-200 focus:outline-none focus:ring-2 focus:ring-red-500/30 transition glass"></textarea>
+
+              <div class="flex items-center justify-between gap-3">
+                <button type="submit" class="px-6 py-3 rounded-lg bg-gradient-to-r from-red-500 to-red-600 font-semibold hover:scale-105 transition transform">Send Message</button>
+                <div class="text-sm text-gray-400 hidden md:block">Or email directly: <a href="mailto:iamhamzatq@gmail.com" class="text-gray-200 underline">iamhamzatq@gmail.com</a></div>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- toast -->
+        <div id="formToast" class="mt-6 fixed right-6 bottom-6 bg-gray-900/95 text-white px-6 py-3 rounded-lg shadow-lg toast-hidden transition-all duration-300">Message sent — thank you!</div>
+      </article>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="mt-10 text-center text-gray-400 text-sm">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 pb-8">
+        <p>© <span id="year"></span> Hamza Tariq — web developer</p>
+        <div class="mt-3 flex items-center justify-center gap-3">
+          <a href="#" class="text-gray-300 hover:text-redish">GitHub</a>
+          <span class="text-gray-600">•</span>
+          <a href="#" class="text-gray-300 hover:text-redish">LinkedIn</a>
+          <span class="text-gray-600">•</span>
+          <a href="#" class="text-gray-300 hover:text-redish">Twitter</a>
         </div>
       </div>
-    </div>
-  </article>
-</section>
+    </footer>
+  </main>
 
-<!-- Scroll Animation Script -->
-<script>
-  const skillItems = document.querySelectorAll('.skill-item');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if(entry.isIntersecting){
-        const bar = entry.target.querySelector('.skill-bar');
-        if(bar){
-          bar.style.width = bar.getAttribute('style').match(/width:\d+%/)[0].split(':')[1];
-        }
+  <!-- SCRIPTS -->
+  <script>
+    /* -------------------------
+       Small utility references
+       ------------------------- */
+    const doc = document;
+    const mobileMenu = doc.getElementById('mobile-menu');
+    const menuBtn = doc.getElementById('menu-btn');
+
+    /* -------------------------
+       Mobile menu toggle (smooth)
+       ------------------------- */
+    menuBtn.addEventListener('click', () => {
+      const panel = mobileMenu.querySelector('.mobile-panel');
+      if (!panel) return;
+      if (panel.classList.contains('pointer-events-none')) {
+        // show
+        panel.classList.remove('pointer-events-none', 'opacity-0', 'translate-y-3');
+        panel.classList.add('opacity-100', 'translate-y-0');
+      } else {
+        // hide
+        panel.classList.add('opacity-0', 'translate-y-3');
+        setTimeout(() => {
+          panel.classList.add('pointer-events-none');
+          panel.classList.remove('opacity-100', 'translate-y-0');
+        }, 220);
       }
     });
-  }, {threshold:0.3});
 
-  skillItems.forEach(item => observer.observe(item));
-</script>
-<!-- Dark Professional Contact / Let's Connect Card -->
-<section class="relative flex justify-center mt-12 px-4 sm:px-6">
-  <article class="w-full max-w-4xl rounded-3xl p-10 md:p-14 bg-white/5 backdrop-blur-md border border-white/10 shadow-[0_10px_40px_rgba(2,6,23,0.6)] hover:shadow-[0_20px_50px_rgba(2,6,23,0.8)] transition-all duration-500 transform hover:scale-105">
+    /* -------------------------
+       Background blur effect on scroll (smooth)
+       ------------------------- */
+    (function () {
+      let latestScroll = 0;
+      const bg = doc.getElementById('hero-bg');
+      window.addEventListener('scroll', () => latestScroll = window.scrollY);
+      function smoothBlur() {
+        const blurVal = Math.min(latestScroll / 60, 8);
+        bg.style.filter = `blur(${blurVal}px)`;
+        requestAnimationFrame(smoothBlur);
+      }
+      requestAnimationFrame(smoothBlur);
+    })();
 
-    <!-- Upper Centered Pill -->
-    <div class="text-center mb-8">
-      <div class="inline-block bg-white/10 px-4 py-1 rounded-full text-gray-300 text-sm font-playfair tracking-wide">LET'S CONNECT</div>
-    </div>
+    /* -------------------------
+       IntersectionObserver for entrances & skill bars
+       ------------------------- */
+    (function () {
+      const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+          const el = entry.target;
 
-    <div class="space-y-8">
-      <!-- Intro Text -->
-      <div class="text-center text-gray-300 space-y-2 max-w-3xl mx-auto">
-        <p>I'm always eager to learn from experienced developers and connect with fellow beginners. Whether you have advice, feedback on my work, or just want to chat about web development, I'd love to hear from you!</p>
-      </div>
+          // reveal card-entrance
+          if (el.classList.contains('card-entrance')) {
+            el.classList.add('show');
+          }
 
-      <!-- Contact Info -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-gray-300">
-        <div>
-          <h3 class="font-playfair text-lg font-semibold mb-2">Email</h3>
-          <p>iamhamzatq@gmail.com</p>
-        </div>
-        <div>
-          <h3 class="font-playfair text-lg font-semibold mb-2">Location</h3>
-          <p>Faisalabad, Pakistan</p>
-        </div>
-      </div>
+          // if it contains skill-bar elements, animate them
+          const bars = el.querySelectorAll('.skill-bar');
+          bars.forEach(bar => {
+            const target = parseInt(bar.getAttribute('data-target') || '0', 10);
+            bar.style.width = target + '%';
+          });
 
-      <!-- Contact Form -->
-      <form id="connectForm" class="space-y-4" novalidate>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <input type="text" id="name" required placeholder="Your Name" class="w-full rounded-lg bg-white/5 border border-white/10 p-3 placeholder-gray-400 text-gray-200 focus:outline-none focus:ring-2 focus:ring-red-500/30 transition duration-300" />
-          <input type="email" id="email" required placeholder="Your Email" class="w-full rounded-lg bg-white/5 border border-white/10 p-3 placeholder-gray-400 text-gray-200 focus:outline-none focus:ring-2 focus:ring-red-500/30 transition duration-300" />
-        </div>
-        <textarea id="message" rows="5" placeholder="Your Message" class="w-full rounded-lg bg-white/5 border border-white/10 p-3 placeholder-gray-400 text-gray-200 focus:outline-none focus:ring-2 focus:ring-red-500/30 transition duration-300"></textarea>
+          obs.unobserve(el);
+        });
+      }, { threshold: 0.18 });
 
-        <div class="flex flex-col md:flex-row md:justify-between items-center gap-4">
-          <button type="submit" class="px-6 py-3 rounded-lg bg-gradient-to-r from-red-500 to-red-600 font-semibold hover:scale-105 transition transform">
-            Send Message
-          </button>
-          <div class="text-sm text-gray-400">Or email directly: <a href="mailto:iamhamzatq@gmail.com" class="text-gray-200 underline">iamhamzatq@gmail.com</a></div>
-        </div>
-      </form>
+      // observe all .card-entrance blocks
+      const cards = doc.querySelectorAll('.card-entrance');
+      cards.forEach(c => observer.observe(c));
 
-      <!-- Toast Notification -->
-      <div id="connectToast" class="toast fixed right-4 bottom-4 bg-gray-900/90 text-white px-6 py-3 rounded-lg shadow-lg opacity-0 transform translate-y-3 transition-all duration-300">Message sent — thank you!</div>
-    </div>
-  </article>
-</section>
+      // also observe each project card separately (if not same element)
+      const projectCards = doc.querySelectorAll('.tilt-card');
+      projectCards.forEach(c => observer.observe(c));
+    })();
 
-<!-- Contact Form Script -->
-<script>
-  const connectForm = document.getElementById('connectForm');
-  const connectToast = document.getElementById('connectToast');
+    /* -------------------------
+       Portfolio tilt effect (lightweight)
+       ------------------------- */
+    (function () {
+      const tiltCards = document.querySelectorAll('[data-tilt]');
+      tiltCards.forEach(card => {
+        const container = card;
+        const inner = card.querySelector('.tilt-inner') || card;
 
-  connectForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const name = document.getElementById('name').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const message = document.getElementById('message').value.trim();
+        function handleMove(e) {
+          const rect = container.getBoundingClientRect();
+          const x = (e.clientX - rect.left) / rect.width; // 0..1
+          const y = (e.clientY - rect.top) / rect.height; // 0..1
+          const rotateY = (x - 0.5) * 14; // degrees
+          const rotateX = (0.5 - y) * 10;
+          const translateZ = 18;
 
-    if(!name || !email || !message){
-      connectToast.textContent = 'Please fill all fields';
-      connectToast.classList.add('show');
-      connectToast.style.opacity = '1';
-      setTimeout(()=>connectToast.style.opacity='0',1800);
-      return;
-    }
+          container.style.transform = `perspective(1200px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+          inner.style.transform = `translateZ(${translateZ}px)`;
+        }
 
-    // Fake success
-    connectToast.textContent = 'Message sent — thank you!';
-    connectToast.style.opacity='1';
-    setTimeout(()=>connectToast.style.opacity='0',2000);
-    connectForm.reset();
-  });
- const cards = document.querySelectorAll('.card-entrance');
-const cardObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if(entry.isIntersecting){
-      entry.target.classList.add('show');
-      cardObserver.unobserve(entry.target);
-    }
-  });
-}, {threshold: 0.2});
+        function handleLeave() {
+          container.style.transform = 'perspective(1200px) rotateX(0deg) rotateY(0deg)';
+          inner.style.transform = 'translateZ(0px)';
+        }
 
-cards.forEach(c => cardObserver.observe(c));
+        container.addEventListener('mousemove', handleMove);
+        container.addEventListener('touchmove', (ev) => {
+          if(ev.touches && ev.touches[0]) handleMove(ev.touches[0]);
+        }, {passive:true});
+        container.addEventListener('mouseleave', handleLeave);
+        container.addEventListener('touchend', handleLeave);
+      });
+    })();
 
-</script>
+    /* -------------------------
+       Contact form handling (front-end only)
+       ------------------------- */
+    (function () {
+      const form = doc.getElementById('contactForm');
+      const toast = doc.getElementById('formToast');
 
-<!-- Extra Toast Styles -->
-<style>
-    #bg, 
-.card-entrance, 
-h1, h5 {
-  will-change: transform, opacity, filter;
-}
+      function showToast(message = 'Sent', timeout = 2000) {
+        toast.textContent = message;
+        toast.classList.remove('toast-hidden');
+        toast.classList.add('toast-show');
+        setTimeout(() => {
+          toast.classList.remove('toast-show');
+          toast.classList.add('toast-hidden');
+        }, timeout);
+      }
 
-.toast.show{
-  opacity:1 !important;
-  transform: translateY(0) !important;
-}
-.skill-bar {
-  transition: width 1s ease-in-out;
-}
-.card-entrance {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: all 0.7s cubic-bezier(.2,.9,.2,1);
-  will-change: transform, opacity;
-}
+      if (form) {
+        form.addEventListener('submit', (e) => {
+          e.preventDefault();
+          const name = doc.getElementById('c_name').value.trim();
+          const email = doc.getElementById('c_email').value.trim();
+          const message = doc.getElementById('c_message').value.trim();
 
-.card-entrance.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-@keyframes fadeBounce {
-  0% { opacity: 0; transform: translateY(30px) scale(0.95); }
-  50% { opacity: 1; transform: translateY(-5px) scale(1.05); }
-  70% { transform: translateY(0px) scale(0.98); }
-  100% { opacity: 1; transform: translateY(0) scale(1); }
-}
+          if (!name || !email || !message) {
+            showToast('Please fill all fields', 1800);
+            return;
+          }
 
-.animate-fadeBounce {
-  animation: fadeBounce 1.5s ease-out forwards;
-}
+          // TODO: Replace with actual backend call (fetch)
+          showToast('Message sent — thank you!', 2000);
+          form.reset();
+        });
+      }
+    })();
 
-</style>
-
-
-
-
+    /* -------------------------
+       Set current year in footer
+       ------------------------- */
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
+
 
 
 
