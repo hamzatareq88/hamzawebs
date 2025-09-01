@@ -470,6 +470,152 @@
   <!-- Education Section -->
 <!-- Education Section -->
 
+<!-- Animate.css CDN -->
+<!-- Animate.css (for bounceInLeft etc.) -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+<!-- Education Section -->
+<section class="education" id="education">
+  <h2 class="edu-title">EDUCATION</h2>
+
+  <div class="edu-content">
+    <h3 class="uni-name">National University of Modern Languages (NUML)</h3>
+    <p class="degree">Bachelor of Science in Computer Science</p>
+    <p class="timeline">2024 - 2027 | Faisalabad, Pakistan</p>
+    <p class="status">Currently Pursuing</p><hr>
+    <h3 class="uni-name" >Birdview logic academy</h3>
+    <div class="focus">
+      <h4>Focus Areas</h4>
+      <ul>
+        <li>Web Development & Programming</li>
+        <li>Active in Coding Communities</li>
+      </ul>
+    </div>
+
+   
+</section>
+
+<style>
+/* Section Styling */
+.education {
+  margin-top: 120px;
+  text-align: center;
+  opacity: 0; /* hidden by default */
+  transform: translateX(-50px);
+  transition: all 0.8s ease;
+}
+
+.education.show {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Title Gradient (Robotic look) */
+.edu-title {
+  font-size: 34px;
+  font-weight: 800;
+  letter-spacing: 4px;
+  background: linear-gradient(90deg, #ffffff, #999999);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 40px;
+  text-transform: uppercase;
+}
+
+/* Content Layout */
+.edu-content {
+  max-width: 750px;
+  margin: auto;
+  text-align: left;
+  color: #ddd;
+  font-size: 15px;
+  line-height: 1.8;
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* University Name */
+.uni-name {
+  font-size: 22px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 6px;
+  background: linear-gradient(90deg, #fff, #aaa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.degree {
+  font-size: 15px;
+  color: #bbb;
+  margin-bottom: 8px;
+}
+
+.timeline {
+  font-size: 14px;
+  color: #aaa;
+  margin-bottom: 12px;
+}
+
+/* Status Tag */
+.status {
+  background: #ff1a1a;
+  color: #fff;
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 25px;
+}
+
+/* Subheadings */
+.edu-content h4 {
+  margin-top: 20px;
+  font-size: 15px;
+  font-weight: 700;
+  color: #ff4444;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+}
+
+/* Lists */
+.edu-content ul {
+  list-style: none;
+  padding-left: 15px;
+}
+
+.edu-content ul li {
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: #ddd;
+  position: relative;
+}
+
+.edu-content ul li::before {
+  content: "⚙"; /* robotic gear symbol */
+  position: absolute;
+  left: -20px;
+  color: #ff4444;
+  font-size: 13px;
+}
+</style>
+
+<script>
+// Scroll-triggered animation
+const eduSection = document.querySelector('.education');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      eduSection.classList.add('show', 'animate__animated', 'animate__bounceInLeft');
+      observer.unobserve(eduSection); // run only once
+    }
+  });
+}, { threshold: 0.3 });
+
+observer.observe(eduSection);
+</script>
 
 <script>
 const text = `I'm a passionate and motivated beginner web developer currently learning the basics of HTML, CSS, and JavaScript. I enjoy building simple, creative websites and continuously exploring new technologies.
@@ -489,10 +635,127 @@ function type() {
 
 type();
 </script>
+<!-- ===== SKILLS SECTION ===== -->
+<!-- ===== SKILLS SECTION ===== -->
+<section id="skills" class="skills-section">
+  <h2 class="skills-heading">Skills</h2>
+  
+  <div class="skills-list">
+    <p class="skill-item focus-in-expand-fwd">HTML5</p>
+    <p class="skill-item focus-in-expand-fwd">CSS3</p>
+    <p class="skill-item focus-in-expand-fwd">JavaScript</p>
+    <p class="skill-item focus-in-expand-fwd">React Basics</p>
+    <p class="skill-item focus-in-expand-fwd">Responsive Design</p>
+    <p class="skill-item focus-in-expand-fwd">Git / GitHub</p>
+    <p class="skill-item focus-in-expand-fwd">VS Code</p>
+    <p class="skill-item focus-in-expand-fwd">Bootstrap</p>
+    <p class="skill-item focus-in-expand-fwd">Figma</p>
+    <p class="skill-item focus-in-expand-fwd">Problem Solving</p>
+  </div>
+</section>
+<style>/* Section */
+.skills-section {
+  padding: 100px 20px;
+  text-align: center;
+  background: #000;
+}
+
+/* Flicker Heading */
+.skills-heading {
+  font-size: 60px;
+  font-weight: 800;
+  text-transform: uppercase;
+  background: linear-gradient(90deg, #ffffff, #a0a0a0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: flicker 2s infinite alternate;
+  margin-bottom: 50px;
+}
+
+@keyframes flicker {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+    opacity: 1;
+    text-shadow: 0 0 8px #fff, 0 0 20px #fff;
+  }
+  20%, 24%, 55% {
+    opacity: 0.3;
+    text-shadow: none;
+  }
+}
+
+/* Skills List */
+.skills-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+}
+
+/* Skill Items same as edu font */
+.skill-item {
+  font-size: 28px;   /* same size like edu text */
+  font-weight: 600;
+  background: linear-gradient(90deg, #ffffff, #a0a0a0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  opacity: 0;
+  transform: scale(0.8);
+}
+
+/* Scroll Animation Class */
+.focus-in-expand-fwd {
+	-webkit-animation: focus-in-expand-fwd 0.8s cubic-bezier(0.250, 0.460, 0.450, 0.940) forwards;
+	        animation: focus-in-expand-fwd 0.8s cubic-bezier(0.250, 0.460, 0.450, 0.940) forwards;
+}
+
+/* Keyframes */
+@-webkit-keyframes focus-in-expand-fwd {
+  0% {
+    letter-spacing: -0.5em;
+    transform: translateZ(-800px);
+    filter: blur(12px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateZ(0);
+    filter: blur(0);
+    opacity: 1;
+  }
+}
+@keyframes focus-in-expand-fwd {
+  0% {
+    letter-spacing: -0.5em;
+    transform: translateZ(-800px);
+    filter: blur(12px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateZ(0);
+    filter: blur(0);
+    opacity: 1;
+  }
+}
+</style>
+<script>
+  const skillItems = document.querySelectorAll('.skill-item');
+
+  function checkVisibility() {
+    skillItems.forEach(item => {
+      const rect = item.getBoundingClientRect();
+      if (rect.top < window.innerHeight - 50) {
+        item.style.opacity = "1";
+        item.classList.add('focus-in-expand-fwd');
+      }
+    });
+  }
+
+  window.addEventListener('scroll', checkVisibility);
+  window.addEventListener('load', checkVisibility);
+</script>
+
 
 </body>
 </html>
-
 
 
 
