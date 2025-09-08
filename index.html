@@ -4,6 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hamza | Web Developer</title>
+	<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "t7j9xuswvd");
+</script>
 
   <!-- Google Fonts: Montserrat -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;800&display=swap" rel="stylesheet">
@@ -43,7 +50,7 @@
 
     .nav {
       display: flex;
-      gap: 30px;
+      gap: 40px;
     }
 
     .nav a {
@@ -126,7 +133,7 @@
     /* Responsive */
     @media (max-width: 768px) {
       .center-text h1 {
-        font-size: 50px;
+        font-size: 70px;
         transform: scaleX(1.1);
       }
       .about h2 {
@@ -140,7 +147,7 @@
 
     @media (max-width: 480px) {
       .center-text h1 {
-        font-size: 35px;
+        font-size: 45px;
         transform: scaleX(1.05);
       }
       .about h2 {
@@ -662,7 +669,7 @@ type();
 .skills-section {
   padding: 100px 20px;
   text-align: center;
-  background: #000000;
+  
 }
 
 /* Flicker Heading */
@@ -773,179 +780,217 @@ observerContact.observe(contactSection);
 </script>
 
 <!-- ===== CONTACT SECTION ===== -->
-<section id="contact" class="contact-section">
-  <h2 class="contact-title">CONTACT</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <style>
+    body {
+      background: #0b0b0d;
+      font-family: "Inter", sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      color: #fff;
+    }
+
+    .contact-card {
+      position: relative;
+      width: 420px;
+      padding: 38px 30px;
+      border-radius: 28px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+      backdrop-filter: blur(25px);
+      overflow: hidden;
+      animation: fadeUp 1s ease;
+    }
+
+    /* Neon Gradient Glow */
+    .contact-card::before {
+      content: "";
+      position: absolute;
+      top: -60px;
+      left: -60px;
+      width: 200px;
+      height: 200px;
+      background: radial-gradient(circle at top left, rgba(226, 234, 233, 0.4), transparent 70%);
+      filter: blur(60px);
+      z-index: 0;
+    }
+
+    .contact-card h2 {
+      font-size: 24px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .contact-card p {
+      font-size: 14px;
+      line-height: 1.5;
+      color: #aaa;
+      margin-bottom: 22px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .info {
+      margin-bottom: 24px;
+      font-size: 14px;
+      color: #ddd;
+      position: relative;
+      z-index: 1;
+    }
+    .info strong {
+      display: block;
+      color: #ff0004;
+      margin-bottom: 6px;
+      font-size: 13px;
+    }
+
+    /* Input Boxes */
+    .input-box {
+      margin-bottom: 16px;
+      position: relative;
+      z-index: 1;
+    }
+    .input-box input,
+    .input-box textarea {
+      width: 100%;
+      padding: 14px;
+      border: none;
+      outline: none;
+      border-radius: 14px;
+      font-size: 14px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      color: #fff;
+      resize: none;
+    }
+    .input-box textarea {
+      height: 100px;
+    }
+
+    .send-btn {
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 14px;
+      background: linear-gradient(90deg, #d60303, #680106);
+      color: #fff;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .send-btn:hover {
+      filter: brightness(1.1);
+    }
+
+    /* Animation */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Responsive */
+    @media (max-width: 480px) {
+      .contact-card {
+        width: 90%;
+        padding: 28px 22px;
+      }
+    }
+  </style>
+
 
   <div class="contact-card">
-    <div class="contact-content">
-      <h3>Get in Touch</h3>
-      <p>If you’d like to work together or just say hello, feel free to reach out!</p>
-      
-      <div class="contact-info">
-        <p><strong>Email:</strong> iamhamzatq@gmail.com</p>
-        <p><strong>GitHub:</strong> github.com/iamhamzatq</p>
-        <p><strong>Location:</strong> Faisalabad, Pakistan</p>
-      </div>
+    <h2>Let's Connect</h2>
+    <p>
+      I'm always eager to learn from experienced developers and connect with fellow beginners.  
+      Whether you have advice, feedback on my work, or just want to chat about web development,  
+      I'd love to hear from you!
+    </p>
 
-      <a href="mailto:iamhamzatq@gmail.com" class="contact-btn">Send Message</a>
+    <div class="info">
+      <strong>Email</strong>
+      iamhamzatq@gmail.com
     </div>
+
+    <div class="info">
+      <strong>Location</strong>
+      Faisalabad, Pakistan
+    </div>
+
+    <form>
+      <div class="input-box">
+        <input type="text" placeholder="Your Name" required>
+      </div>
+      <div class="input-box">
+        <input type="email" placeholder="your.email@example.com" required>
+      </div>
+      <div class="input-box">
+        <textarea placeholder="Your message..." required></textarea>
+      </div>
+      <button type="submit" class="send-btn">Send Message</button>
+    </form>
   </div>
-</section>
-
-<!-- ===== CONTACT CSS (add to your existing <style> or below) ===== -->
-<style>
-/* ===== CONTACT SECTION ===== */
-.contact-section {
-  text-align: center;
-  margin-top: 60px;
-  padding: 40px 16px;
-  opacity: 0; /* hidden by default */
-  transform: translateY(40px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
-  z-index: 1;
-}
-
-/* for quick debugging if you can't see it: uncomment next line to show border */
-/* .contact-section { outline: 2px solid rgba(255,0,0,0.6); } */
-
-.contact-section.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Title */
-.contact-title {
-  font-size: 28px;
-  font-weight: 800;
-  letter-spacing: 4px;
-  background: linear-gradient(90deg, #ffffff, #999999);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  margin-bottom: 24px;
-  text-transform: uppercase;
-}
-
-/* Card */
-.contact-card {
-  max-width: 720px;
-  width: 100%;
-  margin: auto;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 18px;
-  padding: 30px;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.6);
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
-}
-
-.contact-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 12px 35px rgba(255,0,0,0.20);
-}
-
-/* Content */
-.contact-content h3 {
-  font-size: 20px;
-  font-weight: 700;
-  margin-bottom: 10px;
-}
-
-.contact-content p {
-  font-size: 14px;
-  color: #ccc;
-  margin-bottom: 14px;
-  line-height: 1.6;
-}
-
-/* Info */
-.contact-info p {
-  margin: 6px 0;
-  font-size: 14px;
-  color: #ddd;
-}
-
-.contact-info strong {
-  color: #ff4444;
-}
-
-/* Button */
-.contact-btn {
-  display: inline-block;
-  margin-top: 18px;
-  padding: 10px 22px;
-  background: linear-gradient(90deg, #ff1a1a, #cc0000);
-  color: #fff;
-  font-weight: 600;
-  border-radius: 24px;
-  text-decoration: none;
-  transition: 0.25s ease;
-  box-shadow: 0 0 12px rgba(255,0,0,0.25);
-}
-
-/* Mobile tweaks */
-@media (max-width: 480px) {
-  .contact-section { padding: 30px 12px; margin-top: 40px; }
-  .contact-title { font-size: 22px; letter-spacing: 2px; margin-bottom: 18px; }
-  .contact-card { padding: 18px; border-radius: 14px; }
-  .contact-content h3 { font-size: 18px; }
-  .contact-content p, .contact-info p { font-size: 13px; }
-  .contact-btn {
-    display: block;
-    width: 100%;
-    max-width: 360px;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 12px 16px;
-    text-align: center;
-  }
-}
-</style>
-
-<!-- ===== CONTACT JS (put after the section, before </body>) ===== -->
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-  const contactSection = document.querySelector('.contact-section');
-  if (!contactSection) return;
-
-  function showIfVisible() {
-    const rect = contactSection.getBoundingClientRect();
-    if (rect.top < window.innerHeight - 50) {
-      contactSection.classList.add('show');
-      window.removeEventListener('scroll', showIfVisible);
-    }
-  }
-
-  if ('IntersectionObserver' in window) {
-    const observerContact = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          contactSection.classList.add('show');
-          observerContact.unobserve(contactSection);
-        }
-      });
-    }, { threshold: 0.25 });
-    observerContact.observe(contactSection);
-  } else {
-    // fallback for older browsers / edge cases
-    showIfVisible();
-    window.addEventListener('scroll', showIfVisible);
-  }
-
-  // --- Debug helper (uncomment to force show) ---
-  // contactSection.classList.add('show');
-});
-</script>
 
 
+
+
+
+
+
+
+
+                   
 </body>
 </html>
-
-
-
-
-
-
-
 
 
 
