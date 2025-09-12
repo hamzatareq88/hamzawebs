@@ -4,13 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hamza | Web Developer</title>
-	<script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "t7j9xuswvd");
-</script>
 
   <!-- Google Fonts: Montserrat -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;800&display=swap" rel="stylesheet">
@@ -23,7 +16,7 @@
     }
 
     body {
-      background: #0a0a0a;
+      background: #f7f3f3;
       color: #fff;
       font-family: 'Montserrat', sans-serif;
       text-align: center;
@@ -54,7 +47,7 @@
     }
 
     .nav a {
-      color: #fff;
+      color: #ffffff;
       text-decoration: none;
       font-size: 14px;
       font-weight: 400;
@@ -89,7 +82,7 @@
       display: block;
       font-size: 14px;
       margin-top: 10px;
-      color: #aaa;
+      color: #aaaaaa00;
       letter-spacing: 2px;
       font-weight: 300;
     }
@@ -184,8 +177,8 @@
 
 /* Card */
 .edu-card {
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(15, 201, 243, 0.04);
+  border: 1px solid rgb(14, 174, 232);
   border-radius: 18px;
   padding: 35px;
   max-width: 750px;
@@ -299,7 +292,7 @@
   display: block;
   width: 70%;
   height: 2px;
-  background: #ff0000;
+  background: #0594ed;
   margin: 10px auto 0;
 }
 
@@ -522,7 +515,7 @@
   font-size: 34px;
   font-weight: 800;
   letter-spacing: 4px;
-  background: linear-gradient(90deg, #ffffff, #999999);
+  background: linear-gradient(90deg, #ffffff, #139b01);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   margin-bottom: 40px;
@@ -644,140 +637,236 @@ type();
 </script>
 <!-- ===== SKILLS SECTION ===== -->
 <!-- ===== SKILLS SECTION ===== -->
-<section id="skills" class="skills-section">
-  <h2 class="skills-heading">Skills</h2>
-  
-  <div class="skills-list">
-    <p class="skill-item focus-in-expand-fwd">HTML5</p>
-    <p class="skill-item focus-in-expand-fwd">CSS3</p>
-    <p class="skill-item focus-in-expand-fwd">JavaScript</p>
-    <p class="skill-item focus-in-expand-fwd">React Basics</p>
-    <p class="skill-item focus-in-expand-fwd">Responsive Design</p>
-    <p class="skill-item focus-in-expand-fwd">Git / GitHub</p>
-    <p class="skill-item focus-in-expand-fwd">VS Code</p>
-    <p class="skill-item focus-in-expand-fwd">Bootstrap</p>
-    <p class="skill-item focus-in-expand-fwd">Figma</p>
-    <p class="skill-item focus-in-expand-fwd">Problem Solving</p>
+
+<br><br><br><br>
+<div class="wrap">
+  <h1>3D Tech Logos Slider</h1>
+  <div class="subtitle">Ultra smooth GSAP carousel with programming logos</div>
+
+  <div class="stage">
+    <div class="carousel" id="carousel">
+      <div class="slide"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript"></div>
+      <div class="slide"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python"></div>
+      <div class="slide"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5"></div>
+      <div class="slide"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3"></div>
+      <div class="slide"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React"></div>
+      <div class="slide"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js"></div>
+      <div class="slide"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java"></div>
+    </div>
   </div>
-</section>
-<!-- ===== CONTACT SECTION ===== -->
 
-
-
-<style>
-/* Section */
-.skills-section {
-  padding: 100px 20px;
-  text-align: center;
-  
+  <div class="controls">
+    <button class="btn" id="prev">◀ Prev</button>
+    <button class="btn" id="next">Next ▶</button>
+  </div>
+</div>
+ <style>
+:root{
+  --bg: #050505;
+  --text: #f1f5f9;
+  --card-w: 240px;
+  --card-h: 240px;
+  --gap: 28px;
 }
 
-/* Flicker Heading */
-.skills-heading {
-  font-size: 40px;
-  font-weight: 100;
-  text-transform: uppercase;
-  background: linear-gradient(90deg, #ffffff, #a0a0a0);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: flicker 2s infinite alternate;
-  margin-bottom: 50px;
+body{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background: radial-gradient(circle at top, #0d0d0f, #050505);
+  font-family: Poppins, sans-serif;
+  color:var(--text);
 }
 
-@keyframes flicker {
-  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
-    opacity: 1;
-    text-shadow: 0 0 8px #fff, 0 0 20px #fff;
-  }
-  20%, 24%, 55% {
-    opacity: 0.3;
-    text-shadow: none;
-  }
+.wrap{text-align:center;}
+h1{font-size:2rem;font-weight:800;margin-bottom:10px;}
+.subtitle{color:#9aa6b8;margin-bottom:20px;}
+
+.stage{
+  width:100%;height:380px;
+  display:flex;align-items:center;justify-content:center;
+  perspective:1600px;margin-bottom:20px;
 }
 
-/* Skills List */
-.skills-list {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 18px;
+.carousel{
+  width: calc(var(--card-w) + var(--gap) * 2);
+  height: var(--card-h);
+  position: relative;
+  transform-style: preserve-3d;
 }
 
-/* Skill Items same as edu font */
-.skill-item {
-  font-size: 20px;   /* same size like edu text */
-  font-weight: 600;
-  background: linear-gradient(90deg, #ffffff, #a0a0a0);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  opacity: 0;
-  transform: scale(0.8);
+.slide{
+  position:absolute;left:50%;top:50%;
+  width: var(--card-w);height: var(--card-h);
+  margin-left: calc(-1 * var(--card-w)/2);
+  margin-top: calc(-1 * var(--card-h)/2);
+  border-radius:22px;
+  background: rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.08);
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 15px 40px rgba(0,0,0,0.65);
+  backdrop-filter: blur(12px);
+  opacity:0;
 }
 
-/* Scroll Animation Class */
-.focus-in-expand-fwd {
-	-webkit-animation: focus-in-expand-fwd 0.8s cubic-bezier(0.250, 0.460, 0.450, 0.940) forwards;
-	        animation: focus-in-expand-fwd 0.8s cubic-bezier(0.250, 0.460, 0.450, 0.940) forwards;
+.slide img{width:70%;height:70%;object-fit:contain;}
+
+.active{
+  transform: translateZ(70px) scale(1.08) !important;
+  box-shadow:0 35px 90px rgba(0,0,0,0.8);
 }
 
-/* Keyframes */
-@-webkit-keyframes focus-in-expand-fwd {
-  0% {
-    letter-spacing: -0.5em;
-    transform: translateZ(-800px);
-    filter: blur(12px);
-    opacity: 0;
-  }
-  100% {
-    transform: translateZ(0);
-    filter: blur(0);
-    opacity: 1;
-  }
+.controls{display:flex;gap:14px;justify-content:center;margin-top:15px;}
+.btn{
+  padding:10px 18px;border:none;border-radius:12px;
+  background: rgba(255,255,255,0.08);color:var(--text);
+  cursor:pointer;font-weight:600;
 }
-@keyframes focus-in-expand-fwd {
-  0% {
-    letter-spacing: -0.5em;
-    transform: translateZ(-800px);
-    filter: blur(12px);
-    opacity: 0;
-  }
-  100% {
-    transform: translateZ(0);
-    filter: blur(0);
-    opacity: 1;
-  }
-}
+.btn:hover{background: rgba(255,255,255,0.15);}
 </style>
-<script>
-  const skillItems = document.querySelectorAll('.skill-item');
 
-  function checkVisibility() {
-    skillItems.forEach(item => {
-      const rect = item.getBoundingClientRect();
-      if (rect.top < window.innerHeight - 50) {
-        item.style.opacity = "1";
-        item.classList.add('focus-in-expand-fwd');
-      }
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script>
+(function(){
+  const carousel=document.getElementById('carousel');
+  const slides=Array.from(carousel.querySelectorAll('.slide'));
+  const n=slides.length;
+  let rotation=0,radius,isDown=false,velocity=0,lastX=0;
+
+  function computeRadius(){
+    const cardW=parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--card-w'))||slides[0].offsetWidth;
+    return Math.round((cardW/2)/Math.tan(Math.PI/n));
+  }
+
+  function positionSlides(){
+    radius=computeRadius();
+    const theta=360/n;
+    slides.forEach((slide,i)=>{
+      slide.style.transform=`rotateY(${i*theta}deg) translateZ(${radius}px)`;
+    });
+    applyRotation();
+  }
+
+  function applyRotation(){
+    carousel.style.transform=`translateZ(-${radius}px) rotateY(${rotation}deg)`;
+    const normalized=((rotation%360)+360)%360;
+    const theta=360/n;
+    const indexOffset=Math.round(normalized/theta)%n;
+    const frontIndex=(n-indexOffset)%n;
+    slides.forEach((s,idx)=>s.classList.toggle('active',idx===frontIndex));
+  }
+
+  function animateRotationTo(newRot){
+    gsap.to({r:rotation},{
+      r:newRot,duration:1.6,ease:"expo.out",
+      onUpdate:function(){rotation=this.targets()[0].r;applyRotation();}
     });
   }
 
-  window.addEventListener('scroll', checkVisibility);
-  window.addEventListener('load', checkVisibility);
-// Contact Section scroll animation
-const contactSection = document.querySelector('.contact-section');
-
-const observerContact = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      contactSection.classList.add('show');
-      observerContact.unobserve(contactSection); // run once
-    }
+  // drag control
+  carousel.addEventListener('pointerdown',e=>{
+    isDown=true;lastX=e.clientX;velocity=0;
+    carousel.setPointerCapture(e.pointerId);
   });
-}, { threshold: 0.3 });
+  carousel.addEventListener('pointermove',e=>{
+    if(!isDown)return;
+    const dx=e.clientX-lastX;lastX=e.clientX;
+    rotation+=dx*0.25;applyRotation();velocity=dx;
+  });
+  carousel.addEventListener('pointerup',()=>{
+    isDown=false;
+    const inertia=velocity*18;
+    gsap.to({r:rotation},{
+      r:rotation+inertia,duration:2,ease:"expo.out",
+      onUpdate:function(){rotation=this.targets()[0].r;applyRotation();},
+      onComplete:function(){
+        const theta=360/n;
+        animateRotationTo(Math.round(rotation/theta)*theta);
+      }
+    });
+  });
 
-observerContact.observe(contactSection);
+  document.getElementById('prev').onclick=()=>animateRotationTo(rotation-(360/n));
+  document.getElementById('next').onclick=()=>animateRotationTo(rotation+(360/n));
 
+  // autoplay gentle
+  gsap.to({},{
+    repeat:-1,duration:20,ease:"none",
+    onUpdate:()=>{if(!isDown){rotation+=0.015;applyRotation();}}
+  });
+
+  // fade in
+  gsap.to(slides,{opacity:1,duration:1,stagger:0.2,ease:"power2.out"});
+
+  positionSlides();
+})();
 </script>
+
+
+
+
+
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <!-- ===== CONTACT SECTION ===== -->
 
@@ -789,7 +878,7 @@ observerContact.observe(contactSection);
 
 
 
-
+<br><br><br><br>
 
 
 
